@@ -30,6 +30,21 @@
   border-radius: 999px;
   padding: 0 10px 0 10px;
   background: var(--glass-strong);
+  // O desfoque fica numa camada à parte: se ficasse na própria barra, o menu do
+  // celular (que é filho dela) não conseguiria desfocar o conteúdo da página.
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    border-radius: inherit;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    pointer-events: none;
+  }
 }
 
 .bar-wrap {
@@ -191,6 +206,10 @@
     align-items: stretch;
     padding: 10px;
     border-radius: 24px;
+    // fundo mais opaco e bem desfocado para o texto ficar legível sobre a página
+    background: var(--glass-strong);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
 
     &.open {
       display: flex;

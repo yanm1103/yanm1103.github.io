@@ -19,12 +19,13 @@ const LINK_STYLE: Record<ProjectLink['kind'], { icon: IconName; tone: OrbTone }>
     @let p = project();
     <article class="card glass">
       @if (p.image) {
-        <div class="thumb" [class.has-logo]="p.logo">
+        <!-- a imagem abre a página do projeto (ou o repositório, se não houver) -->
+        <a class="thumb" [class.has-logo]="p.logo" [href]="mainLink(p)" target="_blank" rel="noopener" tabindex="-1">
           <img class="shot" [src]="p.image" [alt]="(ui.projects.imageOf | tr: lang()) + ' ' + (p.name | tr: lang())" loading="lazy" width="960" height="540" />
           @if (p.logo) {
             <img class="logo" [src]="p.logo" alt="" loading="lazy" width="900" height="346" />
           }
-        </div>
+        </a>
       }
       <div class="body">
         <div class="meta">
@@ -69,6 +70,7 @@ const LINK_STYLE: Record<ProjectLink['kind'], { icon: IconName; tone: OrbTone }>
         0 2px 6px rgba(20, 110, 180, 0.1);
     }
     .thumb {
+      display: block;
       position: relative;
       aspect-ratio: 16 / 9;
       overflow: hidden;
@@ -179,6 +181,10 @@ export class ProjectCard {
   protected readonly lang = inject(LangService).lang;
   protected readonly ui = UI;
   protected readonly categories = CATEGORY_LABEL;
+  protected mainLink(p: Project) {
+    const link = p.links.find((l) => l.kind === 'live') ?? p.links.find((l) => l.kind === 'repo') ?? p.links[0];
+    return link?.url;
+  }
   protected style(kind: ProjectLink['kind']) {
     return LINK_STYLE[kind];
   }

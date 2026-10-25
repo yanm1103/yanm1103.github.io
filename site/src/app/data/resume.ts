@@ -48,8 +48,8 @@ export const RESUME = {
   ),
   about: [
     l(
-      'Trabalho desde 2022 na evolução de uma plataforma de compliance regulatório usada por cerca de 150 instituições financeiras, cuidando do ciclo completo: requisitos, código, deploy, infraestrutura AWS e suporte à produção.',
-      "Since 2022 I've been building and evolving a regulatory compliance platform used by about 150 financial institutions, covering the full cycle: requirements, code, deployment, AWS infrastructure and production support.",
+      'Trabalho desde 2022 na evolução de uma plataforma de compliance regulatório usada por cerca de 150 instituições financeiras, cuidando do ciclo completo: requisitos, código, deploy, infraestrutura AWS e suporte à produção. No dia a dia, também orquestro agentes Claude para acelerar o desenvolvimento, a revisão de código e os testes.',
+      "Since 2022 I've been building and evolving a regulatory compliance platform used by about 150 financial institutions, covering the full cycle: requirements, code, deployment, AWS infrastructure and production support. I also orchestrate Claude agents day to day to speed up development, code review and testing.",
     ),
     l(
       'Em paralelo, faço pós-graduação em Desenvolvimento Full-Stack na PUC Minas e mantenho projetos pessoais: aplicações web, extensões para VS Code e, por curiosidade, alguns projetos de engenharia reversa.',
