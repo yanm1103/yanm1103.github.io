@@ -30,9 +30,9 @@ export class App {
   protected readonly fish: FishSpec[] = [
     { kind: 'angel', top: '18%', size: 110, dur: 70, delay: -12, dir: 1, opacity: 0.55 },
     { kind: 'clown', top: '38%', size: 70, dur: 48, delay: -30, dir: -1, opacity: 0.6 },
-    { kind: 'tang', top: '58%', size: 96, dur: 62, delay: -5, dir: 1, opacity: 0.55 },
+    { kind: 'magikarp', top: '58%', size: 96, dur: 62, delay: -5, dir: 1, opacity: 0.55 },
     { kind: 'clown', top: '76%', size: 52, dur: 40, delay: -22, dir: 1, opacity: 0.5 },
-    { kind: 'tang', top: '86%', size: 64, dur: 55, delay: -44, dir: -1, opacity: 0.5 },
+    { kind: 'magikarp', top: '86%', size: 64, dur: 55, delay: -44, dir: -1, opacity: 0.5 },
     { kind: 'angel', top: '68%', size: 74, dur: 66, delay: -50, dir: -1, opacity: 0.45 },
   ];
 

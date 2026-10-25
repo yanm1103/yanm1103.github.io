@@ -73,7 +73,7 @@ export class Hero {
   protected readonly towers = towers();
   protected readonly fish: FishSpec[] = [
     { kind: 'clown', top: '14%', size: 64, dur: 34, delay: -6, dir: 1 },
-    { kind: 'tang', top: '30%', size: 78, dur: 42, delay: -25, dir: -1 },
+    { kind: 'magikarp', top: '30%', size: 78, dur: 42, delay: -25, dir: -1 },
     { kind: 'angel', top: '8%', size: 56, dur: 50, delay: -38, dir: 1, opacity: 0.9 },
     { kind: 'clown', top: '46%', size: 44, dur: 30, delay: -18, dir: -1, opacity: 0.85 },
   ];

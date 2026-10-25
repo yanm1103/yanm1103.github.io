@@ -1,0 +1,219 @@
+<!doctype html>
+<!--
+  Imagem de preview (Open Graph) do site, 1200x630.
+  Não é publicada: o script scripts/og.mjs abre esta página num navegador sem janela
+  e salva a captura em public/og-image.jpg (?lang=pt) e public/og-image-en.jpg (?lang=en).
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Nunito+Sans:wght@600;700&display=block"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      body {
+        position: relative;
+        font-family: 'Nunito Sans', 'Segoe UI', sans-serif;
+        background: linear-gradient(180deg, #2f9be8 0%, #79c8f7 45%, #d7f1ff 80%);
+      }
+      .layer {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .card {
+        position: absolute;
+        left: 64px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 620px;
+        padding: 42px 46px;
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.84);
+        border: 2px solid rgba(255, 255, 255, 0.95);
+        box-shadow:
+          0 20px 50px rgba(10, 70, 130, 0.28),
+          0 2px 6px rgba(20, 110, 180, 0.12);
+        overflow: hidden;
+      }
+      .card::before {
+        content: '';
+        position: absolute;
+        inset: 2px 2px auto;
+        height: 48%;
+        border-radius: 30px 30px 40% 40% / 30px 30px 26px 26px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+        z-index: -1;
+      }
+      .hello {
+        font: 700 26px/1 'Nunito', sans-serif;
+        color: #45657a;
+      }
+      h1 {
+        margin-top: 10px;
+        font: 800 64px/1.02 'Nunito', sans-serif;
+        letter-spacing: -0.01em;
+        background: linear-gradient(180deg, #1f86e0, #0f5fb0);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .role {
+        margin-top: 14px;
+        font: 800 32px/1.1 'Nunito', sans-serif;
+        color: #23780e;
+      }
+      .url {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 34px;
+        padding: 10px 22px 10px 12px;
+        border-radius: 999px;
+        font: 800 22px/1 'Nunito', sans-serif;
+        color: #fff;
+        text-shadow: 0 1px 1px rgba(0, 60, 0, 0.4);
+        background: linear-gradient(180deg, #9be86a, #3ea81e 55%, #2a8412);
+        box-shadow:
+          0 6px 16px rgba(62, 168, 30, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      }
+      .url .dot {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 30%, #fff, #c8f5a8 60%, #6fcf3c);
+      }
+      .photo {
+        position: absolute;
+        right: 40px;
+        bottom: -10px;
+        height: 600px;
+        filter: drop-shadow(0 18px 30px rgba(10, 60, 110, 0.35));
+      }
+    </style>
+  </head>
+  <body>
+    <!-- céu: sol, brilhos e nuvens -->
+    <svg class="layer" viewBox="0 0 1200 630" preserveAspectRatio="none">
+      <defs>
+        <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#fffff0" stop-opacity="0.95" />
+          <stop offset="1" stop-color="#fffff0" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="swoosh" x1="0" x2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity="0" />
+          <stop offset="0.5" stop-color="#fff" stop-opacity="0.85" />
+          <stop offset="1" stop-color="#fff" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <circle cx="1080" cy="120" r="230" fill="url(#sun)" />
+      <path d="M-50 230 C 300 110, 700 300, 1250 150" fill="none" stroke="url(#swoosh)" stroke-width="9" opacity="0.5" />
+      <path d="M-50 270 C 360 170, 760 330, 1250 210" fill="none" stroke="url(#swoosh)" stroke-width="3" opacity="0.7" />
+      <g fill="rgba(255,255,255,0.92)">
+        <g transform="translate(760 70) scale(0.8)">
+          <ellipse cx="0" cy="30" rx="120" ry="34" /><circle cx="-40" cy="10" r="40" /><circle cx="20" cy="-5" r="52" /><circle cx="70" cy="18" r="34" />
+        </g>
+        <g transform="translate(140 60) scale(0.55)" opacity="0.85">
+          <ellipse cx="0" cy="30" rx="120" ry="30" /><circle cx="-30" cy="10" r="36" /><circle cx="30" cy="0" r="46" />
+        </g>
+      </g>
+    </svg>
+
+    <!-- prédios de vidro e colinas (gerados no script abaixo) -->
+    <svg class="layer" id="city" viewBox="0 0 1200 630" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="towerA" x1="0" x2="1">
+          <stop offset="0" stop-color="#bfe6ff" /><stop offset="0.45" stop-color="#4aa3e6" /><stop offset="1" stop-color="#1a6fb8" />
+        </linearGradient>
+        <linearGradient id="towerB" x1="0" x2="1">
+          <stop offset="0" stop-color="#bfe6ff" /><stop offset="0.6" stop-color="#4aa3e6" /><stop offset="1" stop-color="#1a6fb8" />
+        </linearGradient>
+        <pattern id="windows" width="12" height="14" patternUnits="userSpaceOnUse">
+          <rect x="2" y="3" width="8" height="8" rx="1.5" fill="rgba(255,255,255,0.45)" />
+        </pattern>
+        <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#d7f1ff" stop-opacity="0" /><stop offset="1" stop-color="#d7f1ff" stop-opacity="0.85" />
+        </linearGradient>
+        <linearGradient id="hillBack" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#8fdc5a" /><stop offset="1" stop-color="#4fae2a" />
+        </linearGradient>
+        <linearGradient id="hillFront" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#78d244" /><stop offset="1" stop-color="#2f8f16" />
+        </linearGradient>
+        <linearGradient id="hillShine" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity="0.45" /><stop offset="1" stop-color="#fff" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <g id="towers"></g>
+      <rect x="0" y="380" width="1200" height="160" fill="url(#haze)" />
+      <path d="M0 520 C 200 470, 420 540, 650 505 S 1040 460, 1200 495 V630 H0 Z" fill="url(#hillBack)" />
+      <path d="M0 520 C 200 470, 420 540, 650 505 S 1040 460, 1200 495" fill="none" stroke="#fff" stroke-opacity="0.45" stroke-width="3" />
+      <path d="M0 585 C 180 545, 400 600, 620 578 S 1000 528, 1200 560 V630 H0 Z" fill="url(#hillFront)" />
+      <path d="M0 585 C 180 545, 400 600, 620 578 S 1000 528, 1200 560 V598 C 1000 568, 760 620, 620 612 S 180 582, 0 625 Z" fill="url(#hillShine)" />
+    </svg>
+
+    <img class="photo" src="../public/images/foto-placeholder.svg" alt="" />
+
+    <div class="card">
+      <p class="hello" id="hello"></p>
+      <h1>Yan Moura Virginio</h1>
+      <p class="role" id="role"></p>
+      <div class="url"><span class="dot"></span>yanm1103.github.io</div>
+    </div>
+
+    <script>
+      var TEXT = {
+        pt: {
+          hello: 'Olá, eu sou',
+          role: 'Desenvolvedor Web Fullstack',
+        },
+        en: {
+          hello: "Hi, I'm",
+          role: 'Fullstack Web Developer',
+        },
+      };
+      var lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'pt';
+      for (var k in TEXT[lang]) document.getElementById(k).textContent = TEXT[lang][k];
+
+      // mesmos prédios do banner do site, numa escala menor
+      var BASE = 540;
+      var spec = [
+        [10, 70, 230, 'flat', 'b'], [90, 95, 330, 'dome', 'a'], [195, 64, 270, 'flat', 'b'], [270, 110, 390, 'slant', 'a'],
+        [390, 75, 300, 'flat', 'b'], [475, 95, 440, 'flat', 'a'], [580, 80, 320, 'flat', 'b'], [670, 115, 370, 'dome', 'a'],
+        [795, 70, 260, 'flat', 'b'], [875, 100, 420, 'slant', 'a'], [985, 80, 310, 'flat', 'b'], [1075, 95, 360, 'dome', 'a'],
+      ];
+      var ns = 'http://www.w3.org/2000/svg';
+      var g = document.getElementById('towers');
+      function el(name, attrs) {
+        var e = document.createElementNS(ns, name);
+        for (var a in attrs) e.setAttribute(a, attrs[a]);
+        g.appendChild(e);
+      }
+      spec.forEach(function (t) {
+        var x = t[0], w = t[1], top = BASE - t[2], cap = t[3], d;
+        if (cap === 'dome') d = 'M' + x + ' ' + (top + w / 2) + ' A' + w / 2 + ' ' + w / 2 + ' 0 0 1 ' + (x + w) + ' ' + (top + w / 2) + ' V' + BASE + ' H' + x + ' Z';
+        else if (cap === 'slant') d = 'M' + x + ' ' + (top + 40) + ' L' + (x + w) + ' ' + top + ' V' + BASE + ' H' + x + ' Z';
+        else d = 'M' + x + ' ' + top + ' H' + (x + w) + ' V' + BASE + ' H' + x + ' Z';
+        el('path', { d: d, fill: t[4] === 'a' ? 'url(#towerA)' : 'url(#towerB)' });
+        el('path', { d: d, fill: 'url(#windows)', opacity: 0.7 });
+        if (cap === 'spire') {
+          el('rect', { x: x + w / 2 - 3, y: top - 55, width: 6, height: 55, fill: '#4aa3e6' });
+          el('circle', { cx: x + w / 2, cy: top - 58, r: 6, fill: '#ff5a4e' });
+        }
+      });
+    </script>
+  </body>
+</html>

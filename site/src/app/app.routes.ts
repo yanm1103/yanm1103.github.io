@@ -6,11 +6,11 @@ const notFound = () => import('./pages/not-found/not-found').then((m) => m.NotFo
 
 export const routes: Routes = [
   // Português (padrão)
-  { path: '', component: Home, title: 'Yan Moura · Desenvolvedor Fullstack' },
+  { path: '', component: Home, title: 'Yan Moura · Desenvolvedor Web Fullstack' },
   { path: 'projetos', loadComponent: projects, title: 'Projetos · Yan Moura' },
 
   // English
-  { path: 'en', component: Home, title: 'Yan Moura · Fullstack Developer' },
+  { path: 'en', component: Home, title: 'Yan Moura · Fullstack Web Developer' },
   { path: 'en/projects', loadComponent: projects, title: 'Projects · Yan Moura' },
 
   // "404" é pré-renderizada e vira o 404.html do GitHub Pages

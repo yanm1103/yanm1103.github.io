@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-export type FishKind = 'clown' | 'tang' | 'angel';
+export type FishKind = 'clown' | 'magikarp' | 'angel';
 
 export interface FishSpec {
   kind: FishKind;
@@ -65,26 +65,43 @@ let nextId = 0;
                 <circle cx="95" cy="30" r="2.8" fill="#14202b" />
               </svg>
             }
-            @case ('tang') {
-              <svg viewBox="0 0 120 70">
+            @case ('magikarp') {
+              <svg viewBox="0 0 120 92">
                 <defs>
-                  <radialGradient [attr.id]="id + 'b'" cx="0.6" cy="0.3" r="0.8">
-                    <stop offset="0" stop-color="#bfeaff" />
-                    <stop offset="0.45" stop-color="#2a93ea" />
-                    <stop offset="1" stop-color="#0b4a9a" />
+                  <radialGradient [attr.id]="id + 'b'" cx="0.62" cy="0.3" r="0.8">
+                    <stop offset="0" stop-color="#ffb784" />
+                    <stop offset="0.45" stop-color="#f2551d" />
+                    <stop offset="1" stop-color="#c22e0b" />
                   </radialGradient>
                 </defs>
+                <!-- cauda branca com borda vermelha -->
                 <g class="tail">
-                  <path d="M24 35 L3 15 Q9 35 3 55 Z" fill="#ffd23a" />
+                  <path d="M36 50 C 26 36, 14 24, 2 20 C 9 38, 9 62, 4 82 C 15 74, 27 62, 36 54 Z" fill="#fff" stroke="#e8401c" stroke-width="2" stroke-linejoin="round" />
+                  <path d="M30 51 L 8 30 M30 52 L 6 52 M30 53 L 8 72" stroke="#c9ccd4" stroke-width="1" />
                 </g>
-                <path d="M34 18 Q62 -2 96 18 Q66 12 34 22 Z" fill="#1a6fc8" />
-                <path d="M34 52 Q62 70 92 52 Q66 58 34 48 Z" fill="#1a6fc8" />
-                <path d="M20 35 C 32 8, 82 2, 108 30 C 112 35, 110 39, 106 42 C 82 66, 32 62, 20 35 Z" [attr.fill]="'url(#' + id + 'b)'" />
-                <path d="M38 24 C 58 14, 86 18, 98 32 C 82 27, 62 30, 48 45 C 40 40, 35 32, 38 24 Z" fill="#082a5c" opacity="0.65" />
-                <ellipse cx="66" cy="18" rx="26" ry="6" fill="#fff" opacity="0.4" />
-                <path d="M70 40 Q78 50 66 52 Z" fill="#ffd23a" opacity="0.9" />
-                <circle cx="96" cy="31" r="4.6" fill="#fff" />
-                <circle cx="97" cy="31" r="2.6" fill="#14202b" />
+                <!-- coroa de 3 pontas e nadadeira de baixo, amarelas -->
+                <path d="M54 24 L50 6 L59 15 L65 2 L70 15 L79 8 L77 24 Z" fill="#f7e65a" stroke="#dcc23a" stroke-width="1.2" stroke-linejoin="round" />
+                <path d="M56 74 L52 88 L60 82 L64 91 L68 81 L75 85 L73 74 Z" fill="#f7e65a" stroke="#dcc23a" stroke-width="1.2" stroke-linejoin="round" />
+                <ellipse cx="68" cy="49" rx="34" ry="30" [attr.fill]="'url(#' + id + 'b)'" />
+                <!-- escamas -->
+                <g fill="none" stroke="#a8280a" stroke-opacity="0.35" stroke-width="1.2">
+                  <path d="M56 40 q6 6 0 12 M66 36 q6 6 0 12 M60 54 q6 6 0 12 M70 50 q6 6 0 12" />
+                </g>
+                <!-- nadadeira lateral branca -->
+                <path d="M74 51 L 40 40 C 46 53, 57 61, 73 58 Z" fill="#fff" stroke="#e8401c" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M72 53 L 48 46 M72 55 L 52 54" stroke="#c9ccd4" stroke-width="1" />
+                <ellipse cx="66" cy="30" rx="18" ry="6" fill="#fff" opacity="0.35" />
+                <!-- olho grande com pupila bem pequena -->
+                <circle cx="82" cy="38" r="9" fill="#fff" stroke="#7a2a10" stroke-width="1.2" />
+                <circle cx="83" cy="38" r="1.5" fill="#111" />
+                <!-- boca larga rosa -->
+                <ellipse cx="102" cy="50" rx="6.5" ry="11" fill="#f27da2" stroke="#c9496f" stroke-width="1" />
+                <ellipse cx="103.5" cy="50" rx="3" ry="7" fill="#a92c4c" />
+                <!-- bigode amarelo -->
+                <g fill="none" stroke="#f5e66a" stroke-width="3" stroke-linecap="round">
+                  <path d="M99 59 C 96 69, 102 77, 96 89" />
+                  <path d="M95 60 C 88 70, 93 80, 86 90" />
+                </g>
               </svg>
             }
             @case ('angel') {

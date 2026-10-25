@@ -33,10 +33,16 @@ const PATHS: Record<Lang, { home: string; projects: string }> = {
   en: { home: '/en', projects: '/en/projects' },
 };
 
-const DESCRIPTION = l(
-  'Yan Moura Virginio, desenvolvedor web fullstack (Angular, Java, AWS, Docker). Currículo, experiência e projetos pessoais.',
-  'Yan Moura Virginio, fullstack web developer (Angular, Java, AWS, Docker). Résumé, experience and personal projects.',
-);
+// Título, descrição e imagem do preview de links (o título da aba fica em app.routes.ts).
+const SEO = {
+  title: l('Yan Moura · Desenvolvedor Web Fullstack', 'Yan Moura · Fullstack Web Developer'),
+  description: l(
+    'Desenvolvedor web fullstack focado em plataformas de compliance bancário: Angular, Java, AWS e Docker. Currículo, experiência e projetos.',
+    'Fullstack web developer focused on banking compliance platforms: Angular, Java, AWS and Docker. Résumé, experience and projects.',
+  ),
+  image: l('og-image.jpg', 'og-image-en.jpg'),
+  imageAlt: l('Yan Moura Virginio, desenvolvedor web fullstack', 'Yan Moura Virginio, fullstack web developer'),
+};
 
 /** O idioma vem da URL: tudo que começa com /en é inglês. */
 @Injectable({ providedIn: 'root' })
@@ -66,9 +72,23 @@ export class LangService {
     this.alternate.set(PATHS[other][page] + (fragment ? '#' + fragment : ''));
 
     this.doc.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
-    this.meta.updateTag({ name: 'description', content: DESCRIPTION[lang] });
-    this.meta.updateTag({ property: 'og:locale', content: lang === 'en' ? 'en_US' : 'pt_BR' });
+    this.setSeo(lang, page);
     this.setAlternateLinks(page);
+  }
+
+  // Como as páginas são pré-renderizadas, estas tags já saem prontas no HTML de cada
+  // rota, que é o que WhatsApp, LinkedIn etc. leem (eles não rodam JavaScript).
+  private setSeo(lang: Lang, page: 'home' | 'projects') {
+    const title = SEO.title[lang];
+    const description = SEO.description[lang];
+    const image = `${SITE}/${SEO.image[lang]}`;
+    this.meta.updateTag({ name: 'description', content: description });
+    this.meta.updateTag({ property: 'og:title', content: title });
+    this.meta.updateTag({ property: 'og:description', content: description });
+    this.meta.updateTag({ property: 'og:url', content: SITE + PATHS[lang][page] });
+    this.meta.updateTag({ property: 'og:locale', content: lang === 'en' ? 'en_US' : 'pt_BR' });
+    this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({ property: 'og:image:alt', content: SEO.imageAlt[lang] });
   }
 
   // <link rel="alternate" hreflang> para buscadores acharem a outra versão
