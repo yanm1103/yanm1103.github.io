@@ -120,7 +120,7 @@ export const UI = {
     hello: l('Olá, eu sou', "Hi, I'm"),
     seeProjects: l('Ver projetos', 'See projects'),
     contact: l('Contato', 'Contact'),
-    photoAlt: l('de braços cruzados, sorrindo', 'with arms crossed, smiling'),
+    photoAlt: l('sorrindo', 'smiling'),
   },
   about: {
     eyebrow: l('Sobre', 'About'),
