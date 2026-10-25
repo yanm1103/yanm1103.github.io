@@ -99,6 +99,7 @@ export const PROJECTS: Project[] = [
       { url: 'https://yanm1103.github.io/CalculoInvestimentos/', kind: 'live' },
       { url: `${GH}/CalculoInvestimentos`, kind: 'repo' },
     ],
+    image: 'images/calculo-investimentos.webp',
   },
   {
     slug: 'estudo-de-api',
@@ -126,6 +127,7 @@ export const PROJECTS: Project[] = [
       { url: 'https://yanm1103.github.io/teste-de-timeout-AngularJS/$timeout_test.html', kind: 'live' },
       { url: `${GH}/teste-de-timeout-AngularJS`, kind: 'repo' },
     ],
+    image: 'images/timeout-angularjs.webp',
   },
   {
     slug: 'alfresco-rhino',
@@ -138,6 +140,7 @@ export const PROJECTS: Project[] = [
     ),
     tags: ['VS Code', 'TextMate grammar', 'Rhino', 'Alfresco'],
     links: [{ url: `${GH}/alfresco-rhino`, kind: 'repo' }],
+    image: 'images/alfresco-rhino.webp',
   },
   {
     slug: 'java-learn',
@@ -165,5 +168,6 @@ export const PROJECTS: Project[] = [
       { url: '/tour-of-heroes/', kind: 'live' },
       { url: `${GH}/Angular-Tour-of-Heroes`, kind: 'repo' },
     ],
+    image: 'images/tour-of-heroes.webp',
   },
 ];
