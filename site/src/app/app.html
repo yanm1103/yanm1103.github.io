@@ -1,0 +1,52 @@
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container bar">
+    <a routerLink="/" class="brand" aria-label="Início">
+      <span class="logo">YM</span>
+      <span class="brand-name">Yan Moura</span>
+    </a>
+
+    <nav class="nav" [class.open]="menuOpen()" aria-label="Seções">
+      @for (item of nav; track item.fragment) {
+        <a routerLink="/" [fragment]="item.fragment">{{ item.label }}</a>
+      }
+      <a routerLink="/projetos" class="all">Todos os projetos</a>
+    </nav>
+
+    <div class="actions">
+      <button
+        type="button"
+        class="icon-btn"
+        (click)="toggleTheme()"
+        [attr.aria-label]="theme() === 'dark' ? 'Usar tema claro' : 'Usar tema escuro'"
+      >
+        <app-icon [name]="theme() === 'dark' ? 'sun' : 'moon'" />
+      </button>
+      <button
+        type="button"
+        class="icon-btn menu-btn"
+        (click)="menuOpen.set(!menuOpen())"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Menu"
+      >
+        <app-icon [name]="menuOpen() ? 'close' : 'menu'" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+  <router-outlet />
+</main>
+
+<footer class="footer">
+  <div class="container foot">
+    <p>© {{ year }} {{ r.name }} · feito com Angular</p>
+    <div class="social">
+      <a [href]="r.links.github" target="_blank" rel="noopener" aria-label="GitHub"><app-icon name="github" /></a>
+      <a [href]="r.links.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><app-icon name="linkedin" /></a>
+      <a [href]="'mailto:' + r.email" aria-label="E-mail"><app-icon name="mail" /></a>
+    </div>
+  </div>
+</footer>

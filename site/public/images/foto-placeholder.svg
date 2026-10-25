@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" role="img" aria-label="Placeholder: pessoa sorrindo de braços cruzados">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2f3a"/>
+      <stop offset="1" stop-color="#1b1f27"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a404d"/>
+      <stop offset="1" stop-color="#2c313b"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="750" fill="url(#bg)"/>
+  <circle cx="300" cy="300" r="250" fill="#f97316" opacity="0.08"/>
+
+  <!-- tronco -->
+  <path d="M70 750 C70 560 120 430 210 405 L390 405 C480 430 530 560 530 750 Z" fill="url(#shirt)"/>
+  <!-- pescoço -->
+  <path d="M262 330 L338 330 L346 412 C320 432 280 432 254 412 Z" fill="#b9a493"/>
+  <path d="M235 404 C270 440 330 440 365 404" fill="none" stroke="#252a33" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- cabeça -->
+  <ellipse cx="300" cy="245" rx="92" ry="108" fill="#cdb7a5"/>
+  <ellipse cx="208" cy="255" rx="16" ry="26" fill="#bea896"/>
+  <ellipse cx="392" cy="255" rx="16" ry="26" fill="#bea896"/>
+  <!-- cabelo -->
+  <path d="M206 236 C196 150 250 118 306 120 C372 122 404 160 396 236 C384 196 360 178 330 172 C300 190 250 186 226 170 C214 186 208 208 206 236 Z" fill="#23262d"/>
+  <!-- olhos e sobrancelhas -->
+  <path d="M248 222 Q266 212 284 220" fill="none" stroke="#23262d" stroke-width="7" stroke-linecap="round"/>
+  <path d="M316 220 Q334 212 352 222" fill="none" stroke="#23262d" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="266" cy="246" rx="8" ry="9" fill="#2a2a2e"/>
+  <ellipse cx="334" cy="246" rx="8" ry="9" fill="#2a2a2e"/>
+  <!-- sorriso -->
+  <path d="M262 300 Q300 334 338 300" fill="none" stroke="#7a4b3f" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- braços cruzados -->
+  <path d="M120 560 C150 520 230 512 330 528 L452 546 C470 549 478 572 462 584 C440 600 380 604 300 600 L150 596 C118 594 104 578 120 560 Z" fill="#cdb7a5"/>
+  <path d="M480 570 C450 532 370 526 270 542 L148 562 C130 566 124 588 140 598 C164 612 220 616 300 612 L452 608 C484 606 498 590 480 570 Z" fill="#bea896"/>
+  <!-- mangas -->
+  <path d="M78 610 C84 540 112 500 150 470 L190 520 C160 545 140 575 132 612 Z" fill="#343a46"/>
+  <path d="M522 610 C516 540 488 500 450 470 L410 520 C440 545 460 575 468 612 Z" fill="#343a46"/>
+</svg>

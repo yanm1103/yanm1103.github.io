@@ -1,0 +1,212 @@
+<!-- Banner -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <p class="hello">Olá, eu sou</p>
+      <h1>{{ r.name }}</h1>
+      <p class="role">
+        {{ r.role }}
+        <span class="stack">
+          @for (s of r.headlineStack; track s) {
+            <span>{{ s }}</span>
+          }
+        </span>
+      </p>
+      <p class="lead">{{ r.summary }}</p>
+      <p class="where"><app-icon name="pin" [size]="16" /> {{ r.location }}</p>
+      <div class="cta">
+        <a routerLink="/" fragment="projetos" class="btn primary">Ver projetos <app-icon name="arrow-right" /></a>
+        <a [href]="'mailto:' + r.email" class="btn"><app-icon name="mail" /> Contato</a>
+        <a [href]="r.links.github" target="_blank" rel="noopener" class="btn icon-only" aria-label="GitHub">
+          <app-icon name="github" />
+        </a>
+        <a [href]="r.links.linkedin" target="_blank" rel="noopener" class="btn icon-only" aria-label="LinkedIn">
+          <app-icon name="linkedin" />
+        </a>
+      </div>
+    </div>
+
+    <figure class="photo">
+      <img
+        [src]="r.photo"
+        [alt]="'Foto de ' + r.name + ' de braços cruzados, sorrindo'"
+        width="600"
+        height="750"
+        fetchpriority="high"
+      />
+    </figure>
+  </div>
+
+  <div class="container">
+    <ul class="highlights">
+      @for (h of r.highlights; track h.label) {
+        <li>
+          <strong>{{ h.value }}</strong>
+          <span>{{ h.label }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- Sobre -->
+<section id="sobre" class="section alt">
+  <div class="container about">
+    <div>
+      <p class="eyebrow">Sobre</p>
+      <h2 class="section-title">Do compliance bancário aos jogos de PS2</h2>
+    </div>
+    <div class="about-text">
+      <p>
+        Trabalho desde 2022 na evolução de uma plataforma de compliance regulatório usada por cerca de 150 instituições
+        financeiras, cuidando do ciclo completo: requisitos, código, deploy, infraestrutura AWS e suporte à produção.
+      </p>
+      <p>
+        Fora do trabalho, gosto de entender como software antigo funciona por dentro. Meus projetos pessoais recentes
+        são ports nativos para PC de jogos de PS2 e de celular, feitos com recompilação estática e decompilação, e
+        ferramentas web para explorar esses jogos.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Projetos -->
+<section id="projetos" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Projetos pessoais</p>
+        <h2 class="section-title">Mais recentes</h2>
+      </div>
+      <a routerLink="/projetos" class="btn">Ver todos <app-icon name="arrow-right" /></a>
+    </div>
+
+    <div class="projects">
+      @for (p of featured; track p.slug) {
+        <app-project-card [project]="p" />
+      }
+      <a routerLink="/projetos" class="more-card">
+        <span class="more-label">Outros</span>
+        <span class="more-count">+{{ others.length }} projetos</span>
+        <ul>
+          @for (o of others.slice(0, 5); track o.slug) {
+            <li>{{ o.name }}</li>
+          }
+          <li>…</li>
+        </ul>
+        <span class="more-go">Ver lista completa <app-icon name="arrow-right" /></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Experiência -->
+<section id="experiencia" class="section alt">
+  <div class="container">
+    <p class="eyebrow">Experiência</p>
+    <h2 class="section-title">Onde trabalhei</h2>
+
+    <ol class="timeline">
+      @for (e of r.experience; track e.company) {
+        <li>
+          <div class="when">{{ e.period }}</div>
+          <div class="what">
+            <h3>{{ e.role }}</h3>
+            <p class="company">{{ e.company }} · {{ e.place }}</p>
+            <ul>
+              @for (b of e.bullets; track $index) {
+                <li>{{ b }}</li>
+              }
+            </ul>
+            @if (e.stack) {
+              <div class="chips">
+                @for (s of e.stack; track s) {
+                  <span class="chip">{{ s }}</span>
+                }
+              </div>
+            }
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- Formação -->
+<section id="formacao" class="section">
+  <div class="container">
+    <p class="eyebrow">Formação</p>
+    <h2 class="section-title">Estudos e certificados</h2>
+
+    <div class="edu">
+      @for (ed of r.education; track ed.school) {
+        <article class="panel">
+          <p class="period">{{ ed.period }}</p>
+          <h3>{{ ed.course }}</h3>
+          <p class="company">{{ ed.school }} · {{ ed.place }}</p>
+          <p class="muted">{{ ed.description }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="two-col">
+      <article class="panel">
+        <h3>Certificados</h3>
+        <ul class="plain">
+          @for (c of r.certificates; track c) {
+            <li>{{ c }}</li>
+          }
+        </ul>
+      </article>
+      <article class="panel">
+        <h3>Idiomas</h3>
+        <ul class="plain langs">
+          @for (l of r.languages; track l.name) {
+            <li>
+              <strong>{{ l.name }}</strong> <span class="muted">{{ l.level }}</span>
+            </li>
+          }
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Habilidades -->
+<section id="habilidades" class="section alt">
+  <div class="container">
+    <p class="eyebrow">Habilidades</p>
+    <h2 class="section-title">Com o que eu trabalho</h2>
+
+    <div class="skills">
+      @for (g of r.skills; track g.name) {
+        <div class="skill-group">
+          <h3>{{ g.name }}</h3>
+          <div class="chips">
+            @for (s of g.items; track s) {
+              <span class="chip">{{ s }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Contato -->
+<section id="contato" class="section">
+  <div class="container">
+    <div class="contact">
+      <div>
+        <p class="eyebrow">Contato</p>
+        <h2 class="section-title">Vamos conversar?</h2>
+        <p class="muted">Aberto a oportunidades e a trocar ideia sobre web, cloud ou engenharia reversa.</p>
+      </div>
+      <div class="cta">
+        <a [href]="'mailto:' + r.email" class="btn primary"><app-icon name="mail" /> {{ r.email }}</a>
+        <a [href]="r.links.linkedin" target="_blank" rel="noopener" class="btn"><app-icon name="linkedin" /> LinkedIn</a>
+        <a [href]="r.links.github" target="_blank" rel="noopener" class="btn"><app-icon name="github" /> GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>

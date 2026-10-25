@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Yan Moura · Desenvolvedor Fullstack</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Yan Moura Virginio, desenvolvedor web fullstack (Angular, Java, AWS, Docker). Currículo, experiência e projetos pessoais."
+    />
+    <meta property="og:title" content="Yan Moura · Desenvolvedor Fullstack" />
+    <meta
+      property="og:description"
+      content="Currículo, experiência e projetos pessoais: ports de jogos para PC, ferramentas e apps web."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yanm1103.github.io/" />
+    <meta property="og:image" content="https://yanm1103.github.io/images/wotm-recompiled.webp" />
+    <meta name="theme-color" content="#0e1014" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // aplica o tema salvo antes da primeira pintura, para não piscar
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

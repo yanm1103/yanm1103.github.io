@@ -1,0 +1,57 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Build do site Angular
+        working-directory: site
+        run: |
+          npm ci
+          npx ng build
+
+      - name: Monta a pasta publicada
+        run: |
+          mkdir -p _site
+          cp -r site/dist/site/browser/. _site/
+          # página 404 pré-renderizada (GitHub Pages usa /404.html)
+          cp _site/404/index.html _site/404.html
+          # apps antigos continuam no mesmo endereço
+          cp -r tour-of-heroes _site/tour-of-heroes
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
