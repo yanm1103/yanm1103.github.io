@@ -247,7 +247,7 @@
   }
 }
 
-// Curvas e bolhas decorativas fixas no fundo da página
+// Curvas e peixes decorativos fixas no fundo da página
 .aero-bg {
   position: fixed;
   inset: 0;
@@ -261,16 +261,6 @@
     left: -20%;
     top: 30%;
     height: auto;
-  }
-
-  .orb-deco {
-    position: absolute;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.9) 0 10%, transparent 12%),
-      radial-gradient(circle at 50% 55%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.5) 72%, rgba(127, 208, 255, 0.35));
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    opacity: 0.6;
   }
 }
 

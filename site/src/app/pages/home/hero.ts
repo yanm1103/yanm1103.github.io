@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
 import { RESUME } from '../../data/resume';
 import { LangService, TrPipe, UI } from '../../i18n';
 import { Icon } from '../../shared/icon';
+import { FishSchool, FishSpec } from '../../shared/fish';
 import { Orb } from '../../shared/orb';
 
 interface Tower {
@@ -59,7 +60,7 @@ function towers(): Tower[] {
 
 @Component({
   selector: 'app-hero',
-  imports: [RouterLink, Icon, Orb, TrPipe],
+  imports: [RouterLink, Icon, Orb, FishSchool, TrPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
@@ -70,6 +71,12 @@ export class Hero {
   protected readonly ui = UI;
   protected readonly r = RESUME;
   protected readonly towers = towers();
+  protected readonly fish: FishSpec[] = [
+    { kind: 'clown', top: '14%', size: 64, dur: 34, delay: -6, dir: 1 },
+    { kind: 'tang', top: '30%', size: 78, dur: 42, delay: -25, dir: -1 },
+    { kind: 'angel', top: '8%', size: 56, dur: 50, delay: -38, dir: 1, opacity: 0.9 },
+    { kind: 'clown', top: '46%', size: 44, dur: 30, delay: -18, dir: -1, opacity: 0.85 },
+  ];
   protected readonly trees = [
     { x: 120, y: 668, r: 26 },
     { x: 168, y: 676, r: 18 },

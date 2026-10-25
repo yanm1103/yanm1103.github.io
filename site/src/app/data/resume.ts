@@ -33,8 +33,8 @@ export const RESUME = {
   // para cima (proporção 3:4). Coloque em public/images/ e ajuste o caminho.
   photo: 'images/foto-placeholder.svg',
   tagline: l(
-    'Plataformas corporativas, APIs REST e infraestrutura cloud no trabalho. Engenharia reversa e ports de jogos nas horas vagas.',
-    'Enterprise platforms, REST APIs and cloud infrastructure at work. Reverse engineering and game ports in my spare time.',
+    'Aplicações web corporativas de ponta a ponta: frontend em Angular, APIs REST em Java e infraestrutura em AWS e Docker.',
+    'End-to-end enterprise web applications: Angular frontends, Java REST APIs and infrastructure on AWS and Docker.',
   ),
   about: [
     l(
@@ -42,14 +42,14 @@ export const RESUME = {
       "Since 2022 I've been building and evolving a regulatory compliance platform used by about 150 financial institutions, covering the full cycle: requirements, code, deployment, AWS infrastructure and production support.",
     ),
     l(
-      'Fora do trabalho, gosto de entender como software antigo funciona por dentro. Meus projetos pessoais recentes são ports nativos para PC de jogos de PS2 e de celular, feitos com recompilação estática e decompilação, e ferramentas web para explorar esses jogos.',
-      'Outside work, I like figuring out how old software works under the hood. My recent personal projects are native PC ports of PS2 and mobile phone games, built with static recompilation and decompilation, plus web tools to explore those games.',
+      'Em paralelo, faço pós-graduação em Desenvolvimento Full-Stack na PUC Minas e mantenho projetos pessoais: aplicações web, extensões para VS Code e, por curiosidade, alguns projetos de engenharia reversa.',
+      "Alongside that, I'm doing a postgraduate specialization in Full-Stack Development at PUC Minas and keep a few personal projects: web apps, VS Code extensions and, out of curiosity, some reverse engineering work.",
     ),
   ],
   highlights: [
     { value: '4+', label: l('anos como dev', 'years as a developer') },
     { value: '~150', label: l('instituições financeiras atendidas', 'financial institutions served') },
-    { value: '2', label: l('jogos portados para PC', 'games ported to PC') },
+    { value: '3', label: l('certificações em cloud e redes', 'cloud and networking certifications') },
   ],
   email: 'yanmv11@gmail.com',
   links: {
@@ -147,7 +147,7 @@ export const RESUME = {
   skills: [
     {
       name: l('Linguagens', 'Languages'),
-      items: ['JavaScript', 'TypeScript', 'Java', 'Python', 'C', 'C++', 'C#', 'ZScript'],
+      items: ['JavaScript', 'TypeScript', 'Java', 'Python', 'C', 'C++', 'C#'],
     },
     {
       name: l('Frontend', 'Frontend'),

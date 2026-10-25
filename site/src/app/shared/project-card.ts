@@ -19,8 +19,11 @@ const LINK_STYLE: Record<ProjectLink['kind'], { icon: IconName; tone: OrbTone }>
     @let p = project();
     <article class="card glass">
       @if (p.image) {
-        <div class="thumb">
-          <img [src]="p.image" [alt]="(ui.projects.imageOf | tr: lang()) + ' ' + (p.name | tr: lang())" loading="lazy" width="960" height="540" />
+        <div class="thumb" [class.has-logo]="p.logo">
+          <img class="shot" [src]="p.image" [alt]="(ui.projects.imageOf | tr: lang()) + ' ' + (p.name | tr: lang())" loading="lazy" width="960" height="540" />
+          @if (p.logo) {
+            <img class="logo" [src]="p.logo" alt="" loading="lazy" width="900" height="346" />
+          }
         </div>
       }
       <div class="body">
@@ -80,14 +83,30 @@ const LINK_STYLE: Record<ProjectLink['kind'], { icon: IconName; tone: OrbTone }>
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 38%);
       pointer-events: none;
     }
-    .thumb img {
+    .shot {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.4s ease;
     }
-    .card:hover .thumb img {
+    .card:hover .shot {
       transform: scale(1.04);
+    }
+    .has-logo .shot {
+      filter: brightness(0.6) saturate(1.1);
+    }
+    .logo {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      margin: auto;
+      width: 82%;
+      height: auto;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+      transition: transform 0.4s ease;
+    }
+    .card:hover .logo {
+      transform: scale(1.03);
     }
     .body {
       flex: 1;

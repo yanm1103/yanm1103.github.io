@@ -107,7 +107,6 @@ export const UI = {
   lightTheme: l('Usar tema claro', 'Use light theme'),
   darkTheme: l('Usar tema escuro', 'Use dark theme'),
   switchLang: l('Read in English', 'Ler em português'),
-  madeWith: l('feito com Angular', 'built with Angular'),
   nav: {
     sobre: l('Sobre', 'About'),
     projetos: l('Projetos', 'Projects'),
@@ -125,11 +124,14 @@ export const UI = {
   },
   about: {
     eyebrow: l('Sobre', 'About'),
-    title: l('Do compliance bancário aos jogos de PS2', 'From banking compliance to PS2 games'),
+    title: l(
+      'Desenvolvedor atualmente focado em plataformas de compliance bancário brasileiro',
+      'Developer currently focused on Brazilian banking compliance platforms',
+    ),
   },
   projects: {
     eyebrow: l('Projetos pessoais', 'Personal projects'),
-    title: l('Mais recentes', 'Latest'),
+    title: l('Destaques', 'Highlights'),
     seeAll: l('Ver todos', 'See all'),
     others: l('Outros', 'Others'),
     count: l('projetos', 'projects'),
@@ -137,8 +139,8 @@ export const UI = {
     back: l('Voltar', 'Back'),
     pageTitle: l('Todos os projetos', 'All projects'),
     intro: l(
-      'De ports de jogos de PS2 a extensões de VS Code e estudos de Angular. Os mais recentes aparecem primeiro.',
-      'From PS2 game ports to VS Code extensions and Angular studies. Most recent first.',
+      'Aplicações web, ferramentas para desenvolvedores, estudos e alguns projetos de engenharia reversa. Os mais recentes aparecem primeiro.',
+      'Web apps, developer tools, studies and a few reverse engineering projects. Most recent first.',
     ),
     all: l('Todos', 'All'),
     filterBy: l('Filtrar por categoria', 'Filter by category'),
@@ -163,8 +165,8 @@ export const UI = {
     eyebrow: l('Contato', 'Contact'),
     title: l('Vamos conversar?', "Let's talk"),
     text: l(
-      'Aberto a oportunidades e a trocar ideia sobre web, cloud ou engenharia reversa.',
-      'Open to opportunities and happy to chat about web, cloud or reverse engineering.',
+      'Aberto a oportunidades e a trocar ideia sobre desenvolvimento web e cloud.',
+      'Open to opportunities and happy to chat about web development and cloud.',
     ),
   },
   notFound: {

@@ -22,5 +22,5 @@ export class Home {
   protected readonly r = RESUME;
   protected readonly featured = PROJECTS.filter((p) => p.featured);
   protected readonly others = PROJECTS.filter((p) => !p.featured);
-  protected readonly highlightIcons: IconName[] = ['calendar', 'briefcase', 'sparkle'];
+  protected readonly highlightIcons: IconName[] = ['calendar', 'briefcase', 'cap'];
 }

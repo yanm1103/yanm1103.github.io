@@ -10,7 +10,7 @@ export const CATEGORY_LABEL: Record<ProjectCategory, L> = {
   study: l('Estudos', 'Studies'),
 };
 
-export const PROJECT_CATEGORIES: ProjectCategory[] = ['games', 'web', 'tools', 'study'];
+export const PROJECT_CATEGORIES: ProjectCategory[] = ['web', 'tools', 'study', 'games'];
 
 export interface ProjectLink {
   url: string;
@@ -26,6 +26,8 @@ export interface Project {
   tags: Text[];
   links: ProjectLink[];
   image?: string;
+  /** Logo com fundo transparente, mostrado por cima da imagem. */
+  logo?: string;
   featured?: boolean;
 }
 
@@ -47,6 +49,7 @@ export const PROJECTS: Project[] = [
       { url: 'https://www.youtube.com/watch?v=IvLLuSYORPc', kind: 'video' },
     ],
     image: 'images/wotm-recompiled.webp',
+    logo: 'images/wotm-recompiled-logo.webp',
     featured: true,
   },
   {
@@ -64,7 +67,6 @@ export const PROJECTS: Project[] = [
       { url: `${GH}/wotm-model-museum`, kind: 'repo' },
     ],
     image: 'images/wotm-model-museum.webp',
-    featured: true,
   },
   {
     slug: 'mikis-world',
@@ -163,56 +165,5 @@ export const PROJECTS: Project[] = [
       { url: '/tour-of-heroes/', kind: 'live' },
       { url: `${GH}/Angular-Tour-of-Heroes`, kind: 'repo' },
     ],
-  },
-  {
-    slug: 'angular-first-app',
-    name: 'Angular First App',
-    year: '2024',
-    category: 'study',
-    summary: l(
-      'Primeiro app em Angular, estilizado com Angular Material e responsivo, com backend simulado via json-server.',
-      'My first Angular app, styled with Angular Material and fully responsive, with a mock backend on json-server.',
-    ),
-    tags: ['Angular', 'Angular Material', 'json-server'],
-    links: [{ url: `${GH}/Angular-First-App-Tutorial`, kind: 'repo' }],
-  },
-  {
-    slug: 'doom-chaves',
-    name: 'DOOM Chaves',
-    year: '2014 · 2020',
-    category: 'games',
-    summary: l(
-      'Mod para DOOM 2 baseado em Chaves, criado aos 15 anos e retomado em 2020: mapas em UDMF, armas, monstros, HUD e sons próprios, rodando no GZDoom.',
-      'DOOM 2 mod based on the TV show El Chavo, started when I was 15 and picked up again in 2020: UDMF maps, custom weapons, monsters, HUD and sounds, running on GZDoom.',
-    ),
-    tags: ['ZScript', 'DECORATE', 'GZDoom', 'Level design'],
-    links: [
-      { url: `${GH}/DOOM-Chaves`, kind: 'repo' },
-      { url: 'https://youtu.be/fmqVgwJOd34', kind: 'video' },
-    ],
-  },
-  {
-    slug: 'blender-donut',
-    name: 'Blender: Donut and Plate',
-    year: '2019',
-    category: 'study',
-    summary: l(
-      'Modelagem e renderização 3D seguindo o clássico tutorial do donut do Blender Guru.',
-      "3D modeling and rendering following Blender Guru's classic donut tutorial.",
-    ),
-    tags: ['Blender', '3D'],
-    links: [{ url: `${GH}/Blender-Donut-and-plate`, kind: 'repo' }],
-  },
-  {
-    slug: 'exercicios-c',
-    name: l('Exercícios em C (FATEC SCS)', 'C Exercises (FATEC SCS)'),
-    year: '2017',
-    category: 'study',
-    summary: l(
-      'Listas de exercícios de C da faculdade. Já foi forkado mais de 40 vezes por outros alunos.',
-      'C exercise sets from college. Forked more than 40 times by other students.',
-    ),
-    tags: ['C'],
-    links: [{ url: `${GH}/Exercicios-C-FatecSCS-2017`, kind: 'repo' }],
   },
 ];

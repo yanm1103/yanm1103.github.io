@@ -3,13 +3,14 @@ import { ChangeDetectionStrategy, Component, afterNextRender, inject, signal } f
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { RESUME } from './data/resume';
 import { LangService, TrPipe, UI } from './i18n';
+import { FishSchool, FishSpec } from './shared/fish';
 import { Orb } from './shared/orb';
 
 type Theme = 'light' | 'dark';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, Orb, TrPipe],
+  imports: [RouterOutlet, RouterLink, Orb, FishSchool, TrPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -24,6 +25,16 @@ export class App {
   protected readonly year = new Date().getFullYear();
   protected readonly menuOpen = signal(false);
   protected readonly theme = signal<Theme>('dark');
+
+  // Peixes nadando no fundo de todas as páginas
+  protected readonly fish: FishSpec[] = [
+    { kind: 'angel', top: '18%', size: 110, dur: 70, delay: -12, dir: 1, opacity: 0.55 },
+    { kind: 'clown', top: '38%', size: 70, dur: 48, delay: -30, dir: -1, opacity: 0.6 },
+    { kind: 'tang', top: '58%', size: 96, dur: 62, delay: -5, dir: 1, opacity: 0.55 },
+    { kind: 'clown', top: '76%', size: 52, dur: 40, delay: -22, dir: 1, opacity: 0.5 },
+    { kind: 'tang', top: '86%', size: 64, dur: 55, delay: -44, dir: -1, opacity: 0.5 },
+    { kind: 'angel', top: '68%', size: 74, dur: 66, delay: -50, dir: -1, opacity: 0.45 },
+  ];
 
   protected readonly nav = (['sobre', 'projetos', 'experiencia', 'formacao', 'habilidades', 'contato'] as const).map(
     (fragment) => ({ fragment, label: UI.nav[fragment] }),
