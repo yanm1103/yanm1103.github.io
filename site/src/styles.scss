@@ -43,6 +43,9 @@
   --glass-tower-2: #4aa3e6;
   --glass-tower-3: #1a6fb8;
   --window: rgba(255, 255, 255, 0.45);
+  // faixa "aquário" da stack
+  --water-top: #8fe3f5;
+  --water-bottom: #1f86e0;
 
   --font-body: 'Nunito Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-display: 'Nunito', 'Segoe UI', system-ui, sans-serif;
@@ -87,6 +90,8 @@
   --glass-tower-2: #1b4f80;
   --glass-tower-3: #0c2c4d;
   --window: rgba(255, 230, 150, 0.55);
+  --water-top: #0e5a8a;
+  --water-bottom: #04213d;
 
   color-scheme: dark;
 }

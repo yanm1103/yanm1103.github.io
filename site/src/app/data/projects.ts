@@ -10,7 +10,7 @@ export const CATEGORY_LABEL: Record<ProjectCategory, L> = {
   study: l('Estudos', 'Studies'),
 };
 
-export const PROJECT_CATEGORIES: ProjectCategory[] = ['web', 'tools', 'study', 'games'];
+export const PROJECT_CATEGORIES: ProjectCategory[] = ['web', 'tools', 'games', 'study'];
 
 export interface ProjectLink {
   url: string;
@@ -34,6 +34,35 @@ export interface Project {
 const GH = 'https://github.com/yanm1103';
 
 export const PROJECTS: Project[] = [
+  {
+    slug: 'calculo-investimentos',
+    name: l('Cálculo de Investimentos', 'Investment Calculator'),
+    year: '2026',
+    category: 'web',
+    summary: l(
+      'Planejador financeiro simples: simula a evolução de investimentos ao longo do tempo e permite incluir compras planejadas. Serve para dar um norte, não como recomendação.',
+      'Simple financial planner: simulates how investments grow over time and lets you add planned purchases. Meant as a rough guide, not financial advice.',
+    ),
+    tags: ['JavaScript', 'HTML', 'CSS'],
+    links: [
+      { url: 'https://yanm1103.github.io/CalculoInvestimentos/', kind: 'live' },
+      { url: `${GH}/CalculoInvestimentos`, kind: 'repo' },
+    ],
+    image: 'images/calculo-investimentos.webp',
+  },
+  {
+    slug: 'alfresco-rhino',
+    name: 'Rhino for Alfresco Web Scripts',
+    year: '2025',
+    category: 'tools',
+    summary: l(
+      'Extensão para VS Code com realce de sintaxe para Web Scripts do Alfresco 6.2, que rodam no motor Rhino: tags <import> e construções como "for each" deixam de quebrar o realce padrão de JavaScript.',
+      'VS Code extension with syntax highlighting for Alfresco 6.2 Web Scripts, which run on the Rhino engine: <import> tags and constructs like "for each" no longer break the default JavaScript highlighting.',
+    ),
+    tags: ['VS Code', 'TextMate grammar', 'Rhino', 'Alfresco'],
+    links: [{ url: `${GH}/alfresco-rhino`, kind: 'repo' }],
+    image: 'images/alfresco-rhino.webp',
+  },
   {
     slug: 'wotm-recompiled',
     name: 'War of the Monsters Recompiled',
@@ -86,22 +115,6 @@ export const PROJECTS: Project[] = [
     featured: true,
   },
   {
-    slug: 'calculo-investimentos',
-    name: l('Cálculo de Investimentos', 'Investment Calculator'),
-    year: '2026',
-    category: 'web',
-    summary: l(
-      'Planejador financeiro simples: simula a evolução de investimentos ao longo do tempo e permite incluir compras planejadas. Serve para dar um norte, não como recomendação.',
-      'Simple financial planner: simulates how investments grow over time and lets you add planned purchases. Meant as a rough guide, not financial advice.',
-    ),
-    tags: ['JavaScript', 'HTML', 'CSS'],
-    links: [
-      { url: 'https://yanm1103.github.io/CalculoInvestimentos/', kind: 'live' },
-      { url: `${GH}/CalculoInvestimentos`, kind: 'repo' },
-    ],
-    image: 'images/calculo-investimentos.webp',
-  },
-  {
     slug: 'estudo-de-api',
     name: l('Estudo de API', 'API Study'),
     year: '2026',
@@ -128,19 +141,6 @@ export const PROJECTS: Project[] = [
       { url: `${GH}/teste-de-timeout-AngularJS`, kind: 'repo' },
     ],
     image: 'images/timeout-angularjs.webp',
-  },
-  {
-    slug: 'alfresco-rhino',
-    name: 'Rhino for Alfresco Web Scripts',
-    year: '2025',
-    category: 'tools',
-    summary: l(
-      'Extensão para VS Code com realce de sintaxe para Web Scripts do Alfresco 6.2, que rodam no motor Rhino: tags <import> e construções como "for each" deixam de quebrar o realce padrão de JavaScript.',
-      'VS Code extension with syntax highlighting for Alfresco 6.2 Web Scripts, which run on the Rhino engine: <import> tags and constructs like "for each" no longer break the default JavaScript highlighting.',
-    ),
-    tags: ['VS Code', 'TextMate grammar', 'Rhino', 'Alfresco'],
-    links: [{ url: `${GH}/alfresco-rhino`, kind: 'repo' }],
-    image: 'images/alfresco-rhino.webp',
   },
   {
     slug: 'java-learn',

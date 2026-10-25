@@ -139,13 +139,17 @@ export const UI = {
     back: l('Voltar', 'Back'),
     pageTitle: l('Todos os projetos', 'All projects'),
     intro: l(
-      'Aplicações web, ferramentas para desenvolvedores, estudos e alguns projetos de engenharia reversa. Os mais recentes aparecem primeiro.',
-      'Web apps, developer tools, studies and a few reverse engineering projects. Most recent first.',
+      'Aplicações web, ferramentas para desenvolvedores, alguns projetos de engenharia reversa e, por último, estudos.',
+      'Web apps, developer tools, a few reverse engineering projects and, last, studies.',
     ),
     all: l('Todos', 'All'),
     filterBy: l('Filtrar por categoria', 'Filter by category'),
     tech: l('Tecnologias', 'Technologies'),
     imageOf: l('Imagem do projeto', 'Screenshot of'),
+  },
+  stack: {
+    eyebrow: l('Stack', 'Stack'),
+    title: l('Com o que trabalho no dia a dia', 'What I use day to day'),
   },
   experience: {
     eyebrow: l('Experiência', 'Experience'),

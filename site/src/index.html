@@ -26,6 +26,21 @@
       rel="stylesheet"
     />
     <script>
+      // Primeira visita à página inicial com navegador em outro idioma: vai para /en.
+      // Não age se a pessoa já escolheu um idioma no botão PT/EN, em links diretos
+      // (só na raiz) nem para buscadores, que precisam indexar a versão em português.
+      try {
+        var path = location.pathname;
+        if ((path === '/' || path === '/index.html') && !localStorage.getItem('lang')) {
+          var bot = navigator.webdriver || /bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent);
+          var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'pt'];
+          var pt = langs.some(function (l) {
+            return /^pt/i.test(l);
+          });
+          if (!bot && !pt) location.replace('/en/' + location.hash);
+        }
+      } catch (e) {}
+
       // aplica o tema salvo antes da primeira pintura, para não piscar
       try {
         var t = localStorage.getItem('theme');

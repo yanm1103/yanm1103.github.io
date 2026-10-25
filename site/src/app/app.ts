@@ -54,6 +54,12 @@ export class App {
   }
 
   protected switchLang(event: MouseEvent) {
+    // guarda a escolha: a partir daqui o site não redireciona mais pelo idioma do navegador
+    try {
+      localStorage.setItem('lang', this.lang() === 'pt' ? 'en' : 'pt');
+    } catch {
+      // armazenamento bloqueado: a escolha vale só para esta visita
+    }
     // deixa abrir em nova aba com Ctrl/Cmd+clique
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.button !== 0) return;
     event.preventDefault();

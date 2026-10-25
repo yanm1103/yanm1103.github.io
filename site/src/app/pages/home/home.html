@@ -33,6 +33,32 @@
   </div>
 </section>
 
+<!-- Stack: faixa "aquário" de ponta a ponta -->
+<section id="stack" class="stack-band" aria-labelledby="stack-title">
+  <div class="rays" aria-hidden="true"></div>
+  <svg class="surface" viewBox="0 0 1600 60" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 36 C 200 8, 400 64, 800 34 S 1400 8, 1600 36" vector-effect="non-scaling-stroke" />
+  </svg>
+  <app-fish-school [fish]="stackFish" />
+  <div class="container stack-inner">
+    <div class="title-row">
+      <app-orb icon="code" tone="aqua" [size]="52" />
+      <div>
+        <p class="eyebrow">{{ ui.stack.eyebrow | tr: lang() }}</p>
+        <h2 class="section-title" id="stack-title">{{ ui.stack.title | tr: lang() }}</h2>
+      </div>
+    </div>
+    <ul class="stack-list">
+      @for (s of r.mainStack; track s.icon) {
+        <li>
+          <span class="tile"><img [src]="'images/stack/' + s.icon + '.svg'" alt="" width="64" height="64" loading="lazy" /></span>
+          <span class="name">{{ s.name }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
 <!-- Projetos -->
 <section id="projetos" class="section">
   <div class="container">

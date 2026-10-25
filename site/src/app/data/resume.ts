@@ -28,6 +28,16 @@ export const RESUME = {
   alias: 'TwistZero',
   role: l('Desenvolvedor Web Fullstack', 'Fullstack Web Developer'),
   headlineStack: ['Angular', 'Java', 'AWS', 'Docker'],
+  // Seção de ícones da página inicial (logos em public/images/stack/)
+  mainStack: [
+    { name: 'AngularJS', icon: 'angularjs' },
+    { name: 'Java', icon: 'java' },
+    { name: 'AWS', icon: 'aws' },
+    { name: 'Claude', icon: 'claude' },
+    { name: 'PostgreSQL', icon: 'postgresql' },
+    { name: 'Docker', icon: 'docker' },
+    { name: 'Playwright', icon: 'playwright' },
+  ],
   location: l('Mauá, SP', 'Mauá, SP, Brazil'),
   // Troque pela foto definitiva: um PNG ou WebP com fundo transparente, recortado da cintura
   // para cima (proporção 3:4). Coloque em public/images/ e ajuste o caminho.
