@@ -158,7 +158,7 @@ export const PROJECTS: Project[] = [
     slug: 'tour-of-heroes',
     name: 'Angular Tour of Heroes',
     year: '2024',
-    category: 'web',
+    category: 'study',
     summary: l(
       'O tutorial oficial do Angular 17, bem modificado: tema customizado do Angular Material com modo claro/escuro, carrossel próprio e busca de heróis.',
       "Angular 17's official tutorial, heavily customized: custom Angular Material theme with light/dark mode, a hand-made carousel and hero search.",
