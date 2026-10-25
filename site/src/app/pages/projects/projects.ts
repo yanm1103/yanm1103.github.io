@@ -1,30 +1,31 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { PROJECTS, PROJECT_CATEGORIES, ProjectCategory } from '../../data/projects';
+import { CATEGORY_LABEL, PROJECTS, PROJECT_CATEGORIES, ProjectCategory } from '../../data/projects';
+import { LangService, TrPipe, UI } from '../../i18n';
 import { Icon } from '../../shared/icon';
 import { ProjectCard } from '../../shared/project-card';
 
 @Component({
   selector: 'app-projects',
-  imports: [RouterLink, Icon, ProjectCard],
+  imports: [RouterLink, Icon, ProjectCard, TrPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section page-top">
       <div class="container">
-        <a routerLink="/" fragment="projetos" class="back"><app-icon name="arrow-left" [size]="16" /> Voltar</a>
-        <p class="eyebrow">Projetos pessoais</p>
-        <h1 class="section-title">Todos os projetos</h1>
-        <p class="intro">
-          De ports de jogos de PS2 a extensões de VS Code e estudos de Angular. Os mais recentes aparecem primeiro.
-        </p>
+        <a [routerLink]="i18n.paths().home" fragment="projetos" class="back"
+          ><app-icon name="arrow-left" [size]="16" /> {{ ui.projects.back | tr: lang() }}</a
+        >
+        <p class="eyebrow">{{ ui.projects.eyebrow | tr: lang() }}</p>
+        <h1 class="section-title">{{ ui.projects.pageTitle | tr: lang() }}</h1>
+        <p class="intro">{{ ui.projects.intro | tr: lang() }}</p>
 
-        <div class="filters" role="group" aria-label="Filtrar por categoria">
+        <div class="filters" role="group" [attr.aria-label]="ui.projects.filterBy | tr: lang()">
           <button type="button" class="btn" [attr.aria-pressed]="filter() === null" (click)="filter.set(null)">
-            Todos <span>{{ all.length }}</span>
+            {{ ui.projects.all | tr: lang() }} <span>{{ all.length }}</span>
           </button>
           @for (c of categories; track c.name) {
             <button type="button" class="btn" [attr.aria-pressed]="filter() === c.name" (click)="filter.set(c.name)">
-              {{ c.name }} <span>{{ c.count }}</span>
+              {{ labels[c.name] | tr: lang() }} <span>{{ c.count }}</span>
             </button>
           }
         </div>
@@ -87,6 +88,10 @@ import { ProjectCard } from '../../shared/project-card';
   `,
 })
 export class Projects {
+  protected readonly i18n = inject(LangService);
+  protected readonly lang = this.i18n.lang;
+  protected readonly ui = UI;
+  protected readonly labels = CATEGORY_LABEL;
   protected readonly all = PROJECTS;
   protected readonly categories = PROJECT_CATEGORIES.map((name) => ({
     name,

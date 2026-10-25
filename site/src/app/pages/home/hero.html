@@ -1,4 +1,4 @@
-<section class="hero" aria-label="Apresentação">
+<section class="hero" [attr.aria-label]="ui.hero.label | tr: lang()">
   <!-- Céu: sol, nuvens e "swooshes" -->
   <svg class="layer sky" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <defs>
@@ -129,7 +129,7 @@
     <img
       class="person"
       [src]="r.photo"
-      [alt]="'Foto de ' + r.name + ' de braços cruzados, sorrindo'"
+      [alt]="r.name + ', ' + (ui.hero.photoAlt | tr: lang())"
       width="600"
       height="800"
       fetchpriority="high"
@@ -149,19 +149,21 @@
   <!-- Texto -->
   <div class="container content">
     <div class="intro glass">
-      <p class="hello">Olá, eu sou</p>
+      <p class="hello">{{ ui.hero.hello | tr: lang() }}</p>
       <h1>{{ r.name }}</h1>
-      <p class="role">{{ r.role }}</p>
+      <p class="role">{{ r.role | tr: lang() }}</p>
       <div class="stack">
         @for (s of r.headlineStack; track s) {
           <span class="chip">{{ s }}</span>
         }
       </div>
-      <p class="lead">{{ r.tagline }}</p>
-      <p class="where"><app-orb icon="pin" tone="aqua" [size]="26" /> {{ r.location }}</p>
+      <p class="lead">{{ r.tagline | tr: lang() }}</p>
+      <p class="where"><app-orb icon="pin" tone="aqua" [size]="26" /> {{ r.location | tr: lang() }}</p>
       <div class="cta">
-        <a routerLink="/" fragment="projetos" class="btn primary">Ver projetos <app-icon name="arrow-right" /></a>
-        <a [href]="'mailto:' + r.email" class="btn"><app-icon name="mail" /> Contato</a>
+        <a [routerLink]="i18n.paths().home" fragment="projetos" class="btn primary"
+          >{{ ui.hero.seeProjects | tr: lang() }} <app-icon name="arrow-right"
+        /></a>
+        <a [href]="'mailto:' + r.email" class="btn"><app-icon name="mail" /> {{ ui.hero.contact | tr: lang() }}</a>
       </div>
       <div class="social">
         <a [href]="r.links.github" target="_blank" rel="noopener" aria-label="GitHub">

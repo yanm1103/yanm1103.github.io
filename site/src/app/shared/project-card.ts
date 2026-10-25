@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { Project, ProjectLink } from '../data/projects';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { CATEGORY_LABEL, Project, ProjectLink } from '../data/projects';
+import { LangService, TrPipe, UI } from '../i18n';
 import { IconName } from './icon';
 import { Orb, OrbTone } from './orb';
 
@@ -12,33 +13,33 @@ const LINK_STYLE: Record<ProjectLink['kind'], { icon: IconName; tone: OrbTone }>
 
 @Component({
   selector: 'app-project-card',
-  imports: [Orb],
+  imports: [Orb, TrPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @let p = project();
     <article class="card glass">
       @if (p.image) {
         <div class="thumb">
-          <img [src]="p.image" [alt]="'Imagem do projeto ' + p.name" loading="lazy" width="960" height="540" />
+          <img [src]="p.image" [alt]="(ui.projects.imageOf | tr: lang()) + ' ' + (p.name | tr: lang())" loading="lazy" width="960" height="540" />
         </div>
       }
       <div class="body">
         <div class="meta">
-          <span>{{ p.category }}</span>
+          <span>{{ categories[p.category] | tr: lang() }}</span>
           <span class="year">{{ p.year }}</span>
         </div>
-        <h3>{{ p.name }}</h3>
-        <p class="summary">{{ p.summary }}</p>
-        <ul class="tags" aria-label="Tecnologias">
-          @for (t of p.tags; track t) {
-            <li class="chip">{{ t }}</li>
+        <h3>{{ p.name | tr: lang() }}</h3>
+        <p class="summary">{{ p.summary | tr: lang() }}</p>
+        <ul class="tags" [attr.aria-label]="ui.projects.tech | tr: lang()">
+          @for (t of p.tags; track $index) {
+            <li class="chip">{{ t | tr: lang() }}</li>
           }
         </ul>
         <div class="links">
           @for (l of p.links; track l.url) {
             <a [href]="l.url" target="_blank" rel="noopener">
               <app-orb [icon]="style(l.kind).icon" [tone]="style(l.kind).tone" [size]="30" />
-              {{ l.label }}
+              {{ ui.links[l.kind] | tr: lang() }}
             </a>
           }
         </div>
@@ -156,6 +157,9 @@ const LINK_STYLE: Record<ProjectLink['kind'], { icon: IconName; tone: OrbTone }>
 })
 export class ProjectCard {
   readonly project = input.required<Project>();
+  protected readonly lang = inject(LangService).lang;
+  protected readonly ui = UI;
+  protected readonly categories = CATEGORY_LABEL;
   protected style(kind: ProjectLink['kind']) {
     return LINK_STYLE[kind];
   }

@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { RESUME } from '../../data/resume';
+import { LangService, TrPipe, UI } from '../../i18n';
 import { Icon } from '../../shared/icon';
 import { Orb } from '../../shared/orb';
 
@@ -58,12 +59,15 @@ function towers(): Tower[] {
 
 @Component({
   selector: 'app-hero',
-  imports: [RouterLink, Icon, Orb],
+  imports: [RouterLink, Icon, Orb, TrPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
 })
 export class Hero {
+  protected readonly i18n = inject(LangService);
+  protected readonly lang = this.i18n.lang;
+  protected readonly ui = UI;
   protected readonly r = RESUME;
   protected readonly towers = towers();
   protected readonly trees = [

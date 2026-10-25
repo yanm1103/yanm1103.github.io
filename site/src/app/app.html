@@ -1,4 +1,4 @@
-<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<a class="skip" href="#conteudo">{{ ui.skip | tr: lang() }}</a>
 
 <div class="aero-bg" aria-hidden="true">
   <svg viewBox="0 0 1600 600" preserveAspectRatio="none">
@@ -27,24 +27,36 @@
 <header class="topbar">
   <div class="container bar-wrap">
     <div class="bar glass">
-      <a routerLink="/" class="brand" aria-label="Início">
+      <a [routerLink]="i18n.paths().home" class="brand" [attr.aria-label]="ui.home | tr: lang()">
         <span class="logo"><span>YM</span></span>
         <span class="brand-name">Yan Moura</span>
       </a>
 
-      <nav class="nav glass" [class.open]="menuOpen()" aria-label="Seções">
+      <nav class="nav glass" [class.open]="menuOpen()" [attr.aria-label]="ui.sections | tr: lang()">
         @for (item of nav; track item.fragment) {
-          <a routerLink="/" [fragment]="item.fragment">{{ item.label }}</a>
+          <a [routerLink]="i18n.paths().home" [fragment]="item.fragment">{{ item.label | tr: lang() }}</a>
         }
-        <a routerLink="/projetos" class="btn primary all">Todos os projetos</a>
+        <a [routerLink]="i18n.paths().projects" class="btn primary all">{{ ui.allProjects | tr: lang() }}</a>
       </nav>
 
       <div class="actions">
+        <a
+          class="lang-btn"
+          [href]="i18n.alternate()"
+          (click)="switchLang($event)"
+          [attr.hreflang]="lang() === 'pt' ? 'en' : 'pt-BR'"
+          [attr.lang]="lang() === 'pt' ? 'en' : 'pt-BR'"
+          [attr.aria-label]="ui.switchLang | tr: lang()"
+          [attr.title]="ui.switchLang | tr: lang()"
+        >
+          <app-orb icon="globe" tone="aqua" [size]="30" />
+          <span>{{ lang() === 'pt' ? 'EN' : 'PT' }}</span>
+        </a>
         <button
           type="button"
           class="icon-btn"
           (click)="toggleTheme()"
-          [attr.aria-label]="theme() === 'dark' ? 'Usar tema claro' : 'Usar tema escuro'"
+          [attr.aria-label]="(theme() === 'dark' ? ui.lightTheme : ui.darkTheme) | tr: lang()"
         >
           <app-orb [icon]="theme() === 'dark' ? 'sun' : 'moon'" tone="glass" [size]="40" />
         </button>
@@ -53,7 +65,7 @@
           class="icon-btn menu-btn"
           (click)="menuOpen.set(!menuOpen())"
           [attr.aria-expanded]="menuOpen()"
-          aria-label="Menu"
+          [attr.aria-label]="ui.menu | tr: lang()"
         >
           <app-orb [icon]="menuOpen() ? 'close' : 'menu'" tone="blue" [size]="40" />
         </button>
@@ -69,7 +81,7 @@
 <footer class="footer">
   <div class="container">
     <div class="foot glass">
-      <p>© {{ year }} {{ r.name }} · feito com Angular</p>
+      <p>© {{ year }} {{ r.name }} · {{ ui.madeWith | tr: lang() }}</p>
       <div class="social">
         <a [href]="r.links.github" target="_blank" rel="noopener" aria-label="GitHub">
           <app-orb icon="github" tone="blue" [size]="36" />
