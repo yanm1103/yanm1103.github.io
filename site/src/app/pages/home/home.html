@@ -1,0 +1,199 @@
+<app-hero />
+
+<!-- Destaques -->
+<div class="container">
+  <ul class="highlights">
+    @for (h of r.highlights; track h.label; let i = $index) {
+      <li class="glass">
+        <app-orb [icon]="highlightIcons[i]" [tone]="i === 1 ? 'blue' : i === 2 ? 'aqua' : 'green'" [size]="48" />
+        <div>
+          <strong>{{ h.value }}</strong>
+          <span>{{ h.label | tr: lang() }}</span>
+        </div>
+      </li>
+    }
+  </ul>
+</div>
+
+<!-- Sobre -->
+<section id="sobre" class="section">
+  <div class="container about">
+    <div class="title-row">
+      <app-orb icon="user" tone="green" [size]="52" />
+      <div>
+        <p class="eyebrow">{{ ui.about.eyebrow | tr: lang() }}</p>
+        <h2 class="section-title">{{ ui.about.title | tr: lang() }}</h2>
+      </div>
+    </div>
+    <div class="about-text glass">
+      @for (p of r.about; track $index) {
+        <p>{{ p | tr: lang() }}</p>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Projetos -->
+<section id="projetos" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="title-row">
+        <app-orb icon="sparkle" tone="blue" [size]="52" />
+        <div>
+          <p class="eyebrow">{{ ui.projects.eyebrow | tr: lang() }}</p>
+          <h2 class="section-title">{{ ui.projects.title | tr: lang() }}</h2>
+        </div>
+      </div>
+      <a [routerLink]="i18n.paths().projects" class="btn blue"
+        >{{ ui.projects.seeAll | tr: lang() }} <app-icon name="arrow-right"
+      /></a>
+    </div>
+
+    <div class="projects">
+      @for (p of featured; track p.slug) {
+        <app-project-card [project]="p" />
+      }
+      <a [routerLink]="i18n.paths().projects" class="more-card glass">
+        <app-orb icon="folder" tone="aqua" [size]="64" />
+        <span class="more-label">{{ ui.projects.others | tr: lang() }}</span>
+        <span class="more-count">+{{ others.length }} {{ ui.projects.count | tr: lang() }}</span>
+        <ul>
+          @for (o of others.slice(0, 5); track o.slug) {
+            <li>{{ o.name | tr: lang() }}</li>
+          }
+          <li>…</li>
+        </ul>
+        <span class="btn primary more-go">{{ ui.projects.seeFull | tr: lang() }} <app-icon name="arrow-right" /></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Experiência -->
+<section id="experiencia" class="section">
+  <div class="container">
+    <div class="title-row">
+      <app-orb icon="briefcase" tone="green" [size]="52" />
+      <div>
+        <p class="eyebrow">{{ ui.experience.eyebrow | tr: lang() }}</p>
+        <h2 class="section-title">{{ ui.experience.title | tr: lang() }}</h2>
+      </div>
+    </div>
+
+    <ol class="timeline">
+      @for (e of r.experience; track e.company) {
+        <li class="glass">
+          <div class="when"><app-icon name="calendar" [size]="16" /> {{ e.period | tr: lang() }}</div>
+          <div class="what">
+            <h3>{{ e.role | tr: lang() }}</h3>
+            <p class="company">{{ e.company }} · {{ e.place }}</p>
+            <ul>
+              @for (b of e.bullets; track $index) {
+                <li>{{ b | tr: lang() }}</li>
+              }
+            </ul>
+            @if (e.stack) {
+              <div class="chips">
+                @for (s of e.stack; track $index) {
+                  <span class="chip">{{ s | tr: lang() }}</span>
+                }
+              </div>
+            }
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- Formação -->
+<section id="formacao" class="section">
+  <div class="container">
+    <div class="title-row">
+      <app-orb icon="cap" tone="blue" [size]="52" />
+      <div>
+        <p class="eyebrow">{{ ui.education.eyebrow | tr: lang() }}</p>
+        <h2 class="section-title">{{ ui.education.title | tr: lang() }}</h2>
+      </div>
+    </div>
+
+    <div class="edu">
+      @for (ed of r.education; track ed.school) {
+        <article class="panel glass">
+          <p class="period">{{ ed.period | tr: lang() }}</p>
+          <h3>{{ ed.course | tr: lang() }}</h3>
+          <p class="company">{{ ed.school }} · {{ ed.place }}</p>
+          <p class="muted">{{ ed.description | tr: lang() }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="two-col">
+      <article class="panel glass">
+        <h3>{{ ui.education.certificates | tr: lang() }}</h3>
+        <ul class="plain">
+          @for (c of r.certificates; track $index) {
+            <li><span class="dot"></span>{{ c | tr: lang() }}</li>
+          }
+        </ul>
+      </article>
+      <article class="panel glass">
+        <h3>{{ ui.education.languages | tr: lang() }}</h3>
+        <ul class="plain langs">
+          @for (l of r.languages; track $index) {
+            <li>
+              <span class="dot"></span><strong>{{ l.name | tr: lang() }}</strong> <span class="muted">{{ l.level | tr: lang() }}</span>
+            </li>
+          }
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Habilidades -->
+<section id="habilidades" class="section">
+  <div class="container">
+    <div class="title-row">
+      <app-orb icon="code" tone="aqua" [size]="52" />
+      <div>
+        <p class="eyebrow">{{ ui.skills.eyebrow | tr: lang() }}</p>
+        <h2 class="section-title">{{ ui.skills.title | tr: lang() }}</h2>
+      </div>
+    </div>
+
+    <div class="skills">
+      @for (g of r.skills; track $index) {
+        <div class="skill-group glass">
+          <h3>{{ g.name | tr: lang() }}</h3>
+          <div class="chips">
+            @for (s of g.items; track $index) {
+              <span class="chip">{{ s | tr: lang() }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Contato -->
+<section id="contato" class="section">
+  <div class="container">
+    <div class="contact glass">
+      <div class="title-row">
+        <app-orb icon="mail" tone="green" [size]="64" />
+        <div>
+          <p class="eyebrow">{{ ui.contact.eyebrow | tr: lang() }}</p>
+          <h2 class="section-title">{{ ui.contact.title | tr: lang() }}</h2>
+          <p class="muted">{{ ui.contact.text | tr: lang() }}</p>
+        </div>
+      </div>
+      <div class="cta">
+        <a [href]="'mailto:' + r.email" class="btn primary"><app-icon name="mail" /> {{ r.email }}</a>
+        <a [href]="r.links.linkedin" target="_blank" rel="noopener" class="btn blue"><app-icon name="linkedin" /> LinkedIn</a>
+        <a [href]="r.links.github" target="_blank" rel="noopener" class="btn"><app-icon name="github" /> GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>

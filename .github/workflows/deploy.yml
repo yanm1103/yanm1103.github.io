@@ -1,0 +1,49 @@
+name: Publicar site
+
+# O GitHub Pages publica a raiz da branch main. Este workflow compila o site Angular
+# (pasta site/) e atualiza os arquivos compilados na raiz sempre que o código muda.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-site
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Build e cópia para a raiz
+        working-directory: site
+        run: |
+          npm ci
+          npm run publish
+
+      - name: Commit dos arquivos compilados
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nada mudou no site compilado."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publica site compilado (${GITHUB_SHA::7})"
+          git push

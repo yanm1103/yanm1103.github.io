@@ -1,0 +1,339 @@
+// Visual Frutiger Aero: céu azul, grama verde, vidro e brilho.
+
+:root {
+  --bg: #eaf6ff;
+  --bg-2: #f1fbea;
+  --text: #0f2a3d;
+  --muted: #45657a;
+  --heading: #0b3b5c;
+
+  --glass: rgba(255, 255, 255, 0.62);
+  --glass-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.95);
+  --glass-shadow: 0 10px 30px rgba(20, 110, 180, 0.14), 0 2px 6px rgba(20, 110, 180, 0.08);
+  --gloss: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%);
+
+  --green-1: #9be86a;
+  --green-2: #3ea81e;
+  --green-3: #2a8412;
+  --blue-1: #7fd0ff;
+  --blue-2: #1f86e0;
+  --blue-3: #0f5fb0;
+  --aqua-1: #8af3ec;
+  --aqua-2: #13a9c2;
+
+  --name-grad: linear-gradient(180deg, #1f86e0, #0f5fb0);
+  --accent: #2a8412;
+  --accent-text: #23780e;
+  --link: #0f6fc6;
+  --chip-bg: rgba(255, 255, 255, 0.7);
+  --chip-border: rgba(31, 134, 224, 0.25);
+
+  // cenário do banner
+  --sky-top: #2f9be8;
+  --sky-mid: #79c8f7;
+  --sky-low: #d7f1ff;
+  --sun: rgba(255, 255, 240, 0.95);
+  --cloud: rgba(255, 255, 255, 0.92);
+  --hill-back-1: #8fdc5a;
+  --hill-back-2: #4fae2a;
+  --hill-front-1: #78d244;
+  --hill-front-2: #2f8f16;
+  --glass-tower-1: #bfe6ff;
+  --glass-tower-2: #4aa3e6;
+  --glass-tower-3: #1a6fb8;
+  --window: rgba(255, 255, 255, 0.45);
+
+  --font-body: 'Nunito Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  --radius: 20px;
+  --max: 1160px;
+  --gutter: clamp(16px, 4vw, 32px);
+
+  color-scheme: light;
+}
+
+// Versão "noite": céu azul-marinho, vidro escuro e brilho aqua.
+@mixin dark-tokens {
+  --bg: #061626;
+  --bg-2: #08201c;
+  --text: #e3f3ff;
+  --muted: #9dbbd0;
+  --heading: #f2fbff;
+
+  --glass: rgba(18, 52, 84, 0.55);
+  --glass-strong: rgba(18, 52, 84, 0.78);
+  --glass-border: rgba(140, 210, 255, 0.28);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(120, 200, 255, 0.05);
+  --gloss: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 55%);
+
+  --name-grad: linear-gradient(180deg, #ffffff, #7fd0ff);
+  --accent: #6fdc3c;
+  --accent-text: #8ee86a;
+  --link: #7fd0ff;
+  --chip-bg: rgba(20, 60, 95, 0.6);
+  --chip-border: rgba(127, 208, 255, 0.25);
+
+  --sky-top: #041a33;
+  --sky-mid: #0b3a66;
+  --sky-low: #2a78a8;
+  --sun: rgba(190, 235, 255, 0.55);
+  --cloud: rgba(190, 220, 245, 0.22);
+  --hill-back-1: #2f7d33;
+  --hill-back-2: #14451c;
+  --hill-front-1: #3c9a2a;
+  --hill-front-2: #123d12;
+  --glass-tower-1: #3d7fb6;
+  --glass-tower-2: #1b4f80;
+  --glass-tower-3: #0c2c4d;
+  --window: rgba(255, 230, 150, 0.55);
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-tokens;
+  }
+}
+:root[data-theme='dark'] {
+  @include dark-tokens;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1200px 600px at 10% 20%, rgba(127, 208, 255, 0.35), transparent 60%),
+    radial-gradient(900px 500px at 90% 60%, rgba(155, 232, 106, 0.25), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--heading);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding: clamp(56px, 9vw, 96px) 0;
+}
+
+.page-top {
+  padding-top: 130px;
+}
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin-bottom: 2px;
+}
+
+.section-title {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-weight: 800;
+}
+
+// Painel de vidro com reflexo no topo
+.glass {
+  position: relative;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 1px 1px auto 1px;
+    height: 50%;
+    border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 40% 40% / calc(var(--radius) - 1px)
+      calc(var(--radius) - 1px) 18px 18px;
+    background: var(--gloss);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+// Botões em pílula brilhante
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(180deg, #ffffff, #dff0fb);
+  color: #0b3b5c;
+  font: 700 0.95rem/1 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow:
+    0 4px 12px rgba(20, 110, 180, 0.2),
+    inset 0 -2px 4px rgba(20, 110, 180, 0.12);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 1px 6px auto 6px;
+    height: 48%;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.15));
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.04);
+    box-shadow:
+      0 8px 18px rgba(20, 110, 180, 0.26),
+      inset 0 -2px 4px rgba(20, 110, 180, 0.12);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &.primary {
+    border-color: rgba(200, 255, 170, 0.9);
+    background: linear-gradient(180deg, var(--green-1), var(--green-2) 55%, var(--green-3));
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 60, 0, 0.45);
+    box-shadow:
+      0 6px 16px rgba(62, 168, 30, 0.38),
+      inset 0 -3px 6px rgba(0, 60, 0, 0.2);
+
+    &::before {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.05));
+    }
+  }
+
+  &.blue {
+    border-color: rgba(190, 235, 255, 0.9);
+    background: linear-gradient(180deg, var(--blue-1), var(--blue-2) 55%, var(--blue-3));
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 30, 80, 0.45);
+    box-shadow:
+      0 6px 16px rgba(31, 134, 224, 0.35),
+      inset 0 -3px 6px rgba(0, 30, 80, 0.2);
+
+    &::before {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.05));
+    }
+  }
+}
+
+.chip {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue-2);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

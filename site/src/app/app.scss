@@ -1,0 +1,281 @@
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  z-index: 100;
+  padding: 8px 14px;
+  background: var(--green-2);
+  color: #fff;
+  border-radius: 8px;
+
+  &:focus {
+    left: 8px;
+  }
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 10px 0;
+  // a barra flutua sobre o banner
+  margin-bottom: -80px;
+}
+
+.bar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 999px;
+  padding: 0 10px 0 10px;
+  background: var(--glass-strong);
+}
+
+.bar-wrap {
+  position: relative;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--heading);
+  white-space: nowrap;
+}
+
+.logo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-shadow: 0 1px 1px rgba(0, 40, 90, 0.5);
+  background: radial-gradient(circle at 50% 35%, var(--blue-1), var(--blue-2) 60%, var(--blue-3));
+  box-shadow:
+    0 4px 12px rgba(31, 134, 224, 0.4),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.18);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 16%;
+    right: 16%;
+    height: 46%;
+    border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
+  }
+
+  span {
+    position: relative;
+  }
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  a {
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 0.93rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      color 0.15s ease,
+      background 0.15s ease;
+
+    &:hover {
+      color: var(--heading);
+      background: rgba(127, 208, 255, 0.25);
+    }
+  }
+
+  .all {
+    margin-left: 4px;
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+      background: linear-gradient(180deg, var(--green-1), var(--green-2) 55%, var(--green-3));
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 12px 0 5px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(214, 236, 250, 0.9));
+  box-shadow:
+    0 3px 10px rgba(20, 110, 180, 0.18),
+    inset 0 -2px 4px rgba(20, 110, 180, 0.1);
+  color: #0b3b5c;
+  font: 800 0.85rem/1 var(--font-display);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.icon-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: scale(1.06);
+  }
+}
+
+.menu-btn {
+  display: none;
+}
+
+@media (min-width: 1181px) {
+  .nav.glass {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 1180px) {
+  .menu-btn {
+    display: block;
+  }
+  .actions {
+    margin-left: auto;
+  }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    border-radius: 24px;
+
+    &.open {
+      display: flex;
+    }
+
+    a {
+      padding: 12px 16px;
+      font-size: 1rem;
+    }
+
+    .all {
+      margin: 6px 0 0;
+      justify-content: center;
+    }
+  }
+}
+
+.footer {
+  margin-top: 24px;
+  padding: 0 0 24px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 22px;
+  border-radius: 999px;
+}
+
+@media (max-width: 560px) {
+  .foot {
+    border-radius: 24px;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.social {
+  display: flex;
+  gap: 10px;
+
+  a {
+    border-radius: 50%;
+    transition: transform 0.15s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Curvas e bolhas decorativas fixas no fundo da página
+.aero-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+
+  svg {
+    position: absolute;
+    width: 140%;
+    left: -20%;
+    top: 30%;
+    height: auto;
+  }
+
+  .orb-deco {
+    position: absolute;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.9) 0 10%, transparent 12%),
+      radial-gradient(circle at 50% 55%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.5) 72%, rgba(127, 208, 255, 0.35));
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 400px) {
+  .brand-name {
+    display: none;
+  }
+}
