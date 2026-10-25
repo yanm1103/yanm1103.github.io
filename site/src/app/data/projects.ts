@@ -115,18 +115,6 @@ export const PROJECTS: Project[] = [
     featured: true,
   },
   {
-    slug: 'estudo-de-api',
-    name: l('Estudo de API', 'API Study'),
-    year: '2026',
-    category: 'study',
-    summary: l(
-      'API REST com CRUD de jogos, feita para estudar Express e MongoDB com Mongoose.',
-      'REST API with a CRUD for games, built to learn Express and MongoDB with Mongoose.',
-    ),
-    tags: ['Node.js', 'Express', 'MongoDB', 'Mongoose'],
-    links: [{ url: `${GH}/Estudo-de-API`, kind: 'repo' }],
-  },
-  {
     slug: 'timeout-angularjs',
     name: l('Teste de digest no AngularJS', 'AngularJS Digest Test'),
     year: '2026',
@@ -141,18 +129,6 @@ export const PROJECTS: Project[] = [
       { url: `${GH}/teste-de-timeout-AngularJS`, kind: 'repo' },
     ],
     image: 'images/timeout-angularjs.webp',
-  },
-  {
-    slug: 'java-learn',
-    name: 'JavaLearn',
-    year: '2025',
-    category: 'study',
-    summary: l(
-      'Exercícios em Java para praticar conceitos mais específicos da linguagem, com build em Gradle.',
-      'Java exercises to practice the more specific parts of the language, built with Gradle.',
-    ),
-    tags: ['Java', 'Gradle'],
-    links: [{ url: `${GH}/JavaLearn`, kind: 'repo' }],
   },
   {
     slug: 'tour-of-heroes',
