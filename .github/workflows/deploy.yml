@@ -1,25 +1,21 @@
-name: Publicar site
-
-# O GitHub Pages publica a raiz da branch main. Este workflow compila o site Angular
-# (pasta site/) e atualiza os arquivos compilados na raiz sempre que o código muda.
+name: Deploy GitHub Pages
 
 on:
   push:
     branches: [main]
-    paths:
-      - 'site/**'
-      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: publish-site
-  cancel-in-progress: false
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -30,20 +26,32 @@ jobs:
           cache: npm
           cache-dependency-path: site/package-lock.json
 
-      - name: Build e cópia para a raiz
+      - name: Build do site Angular
         working-directory: site
         run: |
           npm ci
-          npm run publish
+          npx ng build
 
-      - name: Commit dos arquivos compilados
+      - name: Monta a pasta publicada
         run: |
-          git add -A
-          if git diff --cached --quiet; then
-            echo "Nada mudou no site compilado."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Publica site compilado (${GITHUB_SHA::7})"
-          git push
+          mkdir -p _site
+          cp -r site/dist/site/browser/. _site/
+          # página 404 pré-renderizada (GitHub Pages usa /404.html)
+          cp _site/404/index.html _site/404.html
+          # apps antigos continuam no mesmo endereço
+          cp -r tour-of-heroes _site/tour-of-heroes
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
