@@ -52,7 +52,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: 'alfresco-rhino',
-    name: 'Rhino for Alfresco Web Scripts',
+    name: 'VSCODE: Rhino for Alfresco Web Scripts',
     year: '2025',
     category: 'tools',
     summary: l(
@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: 'wotm-recompiled',
-    name: 'War of the Monsters Recompiled',
+    name: 'War of the Monsters Recompiled!',
     year: '2026',
     category: 'games',
     summary: l(
@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: 'wotm-model-museum',
-    name: 'WotM Model Museum',
+    name: 'War of the Monsters: Model Museum',
     year: '2026',
     category: 'games',
     summary: l(
@@ -128,16 +128,16 @@ export const PROJECTS: Project[] = [
   },
   {
     slug: 'timeout-angularjs',
-    name: l('Teste de $timeout no AngularJS', 'AngularJS $timeout Test'),
+    name: l('Teste de digest no AngularJS', 'AngularJS Digest Test'),
     year: '2026',
     category: 'study',
     summary: l(
-      'Demonstração interativa do digest cycle do AngularJS: compara setTimeout, $apply e $timeout e mostra quando o digest é automático, quando é preciso acioná-lo e por que $timeout + $apply é redundante.',
-      'Interactive demo of the AngularJS digest cycle: compares setTimeout, $apply and $timeout, showing when the digest runs on its own, when you have to trigger it, and why $timeout + $apply is redundant.',
+      'Demonstração interativa do digest cycle do AngularJS: compara setTimeout, $apply, $digest, $evalAsync, $applyAsync e $timeout e mostra quando o digest é automático, quando é preciso acioná-lo e por que $timeout + $apply é redundante.',
+      'Interactive demo of the AngularJS digest cycle: compares setTimeout, $apply, $digest, $evalAsync, $applyAsync and $timeout, showing when the digest runs on its own, when you have to trigger it, and why $timeout + $apply is redundant.',
     ),
     tags: ['AngularJS', 'JavaScript'],
     links: [
-      { url: 'https://yanm1103.github.io/teste-de-timeout-AngularJS/$timeout_test.html', kind: 'live' },
+      { url: 'https://yanm1103.github.io/teste-de-timeout-AngularJS/', kind: 'live' },
       { url: `${GH}/teste-de-timeout-AngularJS`, kind: 'repo' },
     ],
     image: 'images/timeout-angularjs.webp',
