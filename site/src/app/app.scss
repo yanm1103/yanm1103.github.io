@@ -4,8 +4,8 @@
   top: 8px;
   z-index: 100;
   padding: 8px 14px;
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--green-2);
+  color: #fff;
   border-radius: 8px;
 
   &:focus {
@@ -17,16 +17,23 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+  // a barra flutua sobre o banner
+  margin-bottom: -80px;
 }
 
 .bar {
-  height: 64px;
+  height: 60px;
   display: flex;
   align-items: center;
   gap: 16px;
+  border-radius: 999px;
+  padding: 0 10px 0 10px;
+  background: var(--glass-strong);
+}
+
+.bar-wrap {
+  position: relative;
 }
 
 .brand {
@@ -35,30 +42,54 @@
   gap: 10px;
   text-decoration: none;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--heading);
 }
 
 .logo {
+  position: relative;
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
-  background: var(--accent);
-  color: var(--on-accent);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
   font-size: 0.85rem;
+  font-weight: 800;
+  text-shadow: 0 1px 1px rgba(0, 40, 90, 0.5);
+  background: radial-gradient(circle at 50% 35%, var(--blue-1), var(--blue-2) 60%, var(--blue-3));
+  box-shadow:
+    0 4px 12px rgba(31, 134, 224, 0.4),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.18);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 16%;
+    right: 16%;
+    height: 46%;
+    border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
+  }
+
+  span {
+    position: relative;
+  }
 }
 
 .nav {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
 
   a {
-    padding: 8px 11px;
-    border-radius: 8px;
-    font-size: 0.92rem;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 0.93rem;
+    font-weight: 700;
     color: var(--muted);
     text-decoration: none;
     transition:
@@ -66,35 +97,37 @@
       background 0.15s ease;
 
     &:hover {
-      color: var(--text);
-      background: var(--surface-2);
+      color: var(--heading);
+      background: rgba(127, 208, 255, 0.25);
     }
   }
 
   .all {
-    color: var(--accent);
-    font-weight: 600;
+    margin-left: 4px;
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+      background: linear-gradient(180deg, var(--green-1), var(--green-2) 55%, var(--green-3));
+    }
   }
 }
 
 .actions {
   display: flex;
-  gap: 4px;
+  gap: 6px;
 }
 
 .icon-btn {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: 50%;
   cursor: pointer;
+  transition: transform 0.15s ease;
 
   &:hover {
-    border-color: var(--accent);
+    transform: scale(1.06);
   }
 }
 
@@ -102,9 +135,23 @@
   display: none;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 961px) {
+  .nav.glass {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 960px) {
   .menu-btn {
-    display: grid;
+    display: block;
   }
   .actions {
     margin-left: auto;
@@ -112,29 +159,33 @@
   .nav {
     display: none;
     position: absolute;
-    top: 64px;
+    top: 72px;
     left: 0;
     right: 0;
     flex-direction: column;
     align-items: stretch;
-    padding: 8px var(--gutter) 16px;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 24px;
 
     &.open {
       display: flex;
     }
 
     a {
-      padding: 12px;
+      padding: 12px 16px;
       font-size: 1rem;
+    }
+
+    .all {
+      margin: 6px 0 0;
+      justify-content: center;
     }
   }
 }
 
 .footer {
-  border-top: 1px solid var(--border);
-  padding: 28px 0;
+  margin-top: 24px;
+  padding: 0 0 24px;
   color: var(--muted);
   font-size: 0.9rem;
 }
@@ -145,23 +196,55 @@
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+  padding: 16px 22px;
+  border-radius: 999px;
+}
+
+@media (max-width: 560px) {
+  .foot {
+    border-radius: 24px;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 .social {
   display: flex;
-  gap: 6px;
+  gap: 10px;
 
   a {
-    display: grid;
-    place-items: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    color: var(--muted);
+    border-radius: 50%;
+    transition: transform 0.15s ease;
 
     &:hover {
-      color: var(--accent);
-      background: var(--surface-2);
+      transform: translateY(-2px);
     }
+  }
+}
+
+// Curvas e bolhas decorativas fixas no fundo da página
+.aero-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+
+  svg {
+    position: absolute;
+    width: 140%;
+    left: -20%;
+    top: 30%;
+    height: auto;
+  }
+
+  .orb-deco {
+    position: absolute;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.9) 0 10%, transparent 12%),
+      radial-gradient(circle at 50% 55%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.5) 72%, rgba(127, 208, 255, 0.35));
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    opacity: 0.6;
   }
 }

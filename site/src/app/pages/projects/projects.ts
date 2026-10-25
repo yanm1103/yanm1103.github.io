@@ -9,7 +9,7 @@ import { ProjectCard } from '../../shared/project-card';
   imports: [RouterLink, Icon, ProjectCard],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="section">
+    <section class="section page-top">
       <div class="container">
         <a routerLink="/" fragment="projetos" class="back"><app-icon name="arrow-left" [size]="16" /> Voltar</a>
         <p class="eyebrow">Projetos pessoais</p>
@@ -19,11 +19,11 @@ import { ProjectCard } from '../../shared/project-card';
         </p>
 
         <div class="filters" role="group" aria-label="Filtrar por categoria">
-          <button type="button" [attr.aria-pressed]="filter() === null" (click)="filter.set(null)">
+          <button type="button" class="btn" [attr.aria-pressed]="filter() === null" (click)="filter.set(null)">
             Todos <span>{{ all.length }}</span>
           </button>
           @for (c of categories; track c.name) {
-            <button type="button" [attr.aria-pressed]="filter() === c.name" (click)="filter.set(c.name)">
+            <button type="button" class="btn" [attr.aria-pressed]="filter() === c.name" (click)="filter.set(c.name)">
               {{ c.name }} <span>{{ c.count }}</span>
             </button>
           }
@@ -43,7 +43,8 @@ import { ProjectCard } from '../../shared/project-card';
       align-items: center;
       gap: 6px;
       margin-bottom: 24px;
-      color: var(--muted);
+      color: var(--link);
+      font-weight: 700;
       text-decoration: none;
       font-size: 0.92rem;
     }
@@ -64,30 +65,19 @@ import { ProjectCard } from '../../shared/project-card';
       flex-wrap: wrap;
       gap: 8px;
     }
-    .filters button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      font: 500 0.9rem/1 var(--font-body);
-      cursor: pointer;
+    .filters .btn {
+      padding: 9px 16px;
+      font-size: 0.9rem;
     }
-    .filters button span {
+    .filters .btn span {
       font-size: 0.78rem;
-      color: var(--muted);
+      opacity: 0.7;
     }
-    .filters button[aria-pressed='true'] {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--on-accent);
-    }
-    .filters button[aria-pressed='true'] span {
-      color: inherit;
-      opacity: 0.8;
+    .filters .btn[aria-pressed='true'] {
+      border-color: rgba(200, 255, 170, 0.9);
+      background: linear-gradient(180deg, var(--green-1), var(--green-2) 55%, var(--green-3));
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0, 60, 0, 0.45);
     }
     .grid {
       display: grid;

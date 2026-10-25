@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="section">
+    <section class="section page-top">
       <div class="container wrap">
         <p class="eyebrow">Erro 404</p>
         <h1 class="section-title">Página não encontrada</h1>

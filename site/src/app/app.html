@@ -1,37 +1,63 @@
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
+<div class="aero-bg" aria-hidden="true">
+  <svg viewBox="0 0 1600 600" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="bgSwooshG" x1="0" x2="1">
+        <stop offset="0" stop-color="#9be86a" stop-opacity="0" />
+        <stop offset="0.5" stop-color="#9be86a" stop-opacity="0.35" />
+        <stop offset="1" stop-color="#7fd0ff" stop-opacity="0" />
+      </linearGradient>
+      <linearGradient id="bgSwooshB" x1="0" x2="1">
+        <stop offset="0" stop-color="#7fd0ff" stop-opacity="0" />
+        <stop offset="0.5" stop-color="#7fd0ff" stop-opacity="0.4" />
+        <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <path d="M0 380 C 400 180, 900 520, 1600 260 L1600 330 C 900 580, 400 260, 0 450 Z" fill="url(#bgSwooshG)" />
+    <path d="M0 300 C 500 120, 1000 460, 1600 200" fill="none" stroke="url(#bgSwooshB)" stroke-width="6" />
+    <path d="M0 330 C 520 170, 1020 500, 1600 240" fill="none" stroke="url(#bgSwooshB)" stroke-width="2" />
+  </svg>
+  <span class="orb-deco" style="width: 140px; height: 140px; left: 4%; top: 62%"></span>
+  <span class="orb-deco" style="width: 60px; height: 60px; left: 14%; top: 82%"></span>
+  <span class="orb-deco" style="width: 220px; height: 220px; right: -60px; top: 18%"></span>
+  <span class="orb-deco" style="width: 80px; height: 80px; right: 12%; top: 74%"></span>
+</div>
+
 <header class="topbar">
-  <div class="container bar">
-    <a routerLink="/" class="brand" aria-label="Início">
-      <span class="logo">YM</span>
-      <span class="brand-name">Yan Moura</span>
-    </a>
+  <div class="container bar-wrap">
+    <div class="bar glass">
+      <a routerLink="/" class="brand" aria-label="Início">
+        <span class="logo"><span>YM</span></span>
+        <span class="brand-name">Yan Moura</span>
+      </a>
 
-    <nav class="nav" [class.open]="menuOpen()" aria-label="Seções">
-      @for (item of nav; track item.fragment) {
-        <a routerLink="/" [fragment]="item.fragment">{{ item.label }}</a>
-      }
-      <a routerLink="/projetos" class="all">Todos os projetos</a>
-    </nav>
+      <nav class="nav glass" [class.open]="menuOpen()" aria-label="Seções">
+        @for (item of nav; track item.fragment) {
+          <a routerLink="/" [fragment]="item.fragment">{{ item.label }}</a>
+        }
+        <a routerLink="/projetos" class="btn primary all">Todos os projetos</a>
+      </nav>
 
-    <div class="actions">
-      <button
-        type="button"
-        class="icon-btn"
-        (click)="toggleTheme()"
-        [attr.aria-label]="theme() === 'dark' ? 'Usar tema claro' : 'Usar tema escuro'"
-      >
-        <app-icon [name]="theme() === 'dark' ? 'sun' : 'moon'" />
-      </button>
-      <button
-        type="button"
-        class="icon-btn menu-btn"
-        (click)="menuOpen.set(!menuOpen())"
-        [attr.aria-expanded]="menuOpen()"
-        aria-label="Menu"
-      >
-        <app-icon [name]="menuOpen() ? 'close' : 'menu'" />
-      </button>
+      <div class="actions">
+        <button
+          type="button"
+          class="icon-btn"
+          (click)="toggleTheme()"
+          [attr.aria-label]="theme() === 'dark' ? 'Usar tema claro' : 'Usar tema escuro'"
+        >
+          <app-orb [icon]="theme() === 'dark' ? 'sun' : 'moon'" tone="glass" [size]="40" />
+        </button>
+        <button
+          type="button"
+          class="icon-btn menu-btn"
+          (click)="menuOpen.set(!menuOpen())"
+          [attr.aria-expanded]="menuOpen()"
+          aria-label="Menu"
+        >
+          <app-orb [icon]="menuOpen() ? 'close' : 'menu'" tone="blue" [size]="40" />
+        </button>
+      </div>
     </div>
   </div>
 </header>
@@ -41,12 +67,18 @@
 </main>
 
 <footer class="footer">
-  <div class="container foot">
-    <p>© {{ year }} {{ r.name }} · feito com Angular</p>
-    <div class="social">
-      <a [href]="r.links.github" target="_blank" rel="noopener" aria-label="GitHub"><app-icon name="github" /></a>
-      <a [href]="r.links.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><app-icon name="linkedin" /></a>
-      <a [href]="'mailto:' + r.email" aria-label="E-mail"><app-icon name="mail" /></a>
+  <div class="container">
+    <div class="foot glass">
+      <p>© {{ year }} {{ r.name }} · feito com Angular</p>
+      <div class="social">
+        <a [href]="r.links.github" target="_blank" rel="noopener" aria-label="GitHub">
+          <app-orb icon="github" tone="blue" [size]="36" />
+        </a>
+        <a [href]="r.links.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <app-orb icon="linkedin" tone="blue" [size]="36" />
+        </a>
+        <a [href]="'mailto:' + r.email" aria-label="E-mail"><app-orb icon="mail" tone="green" [size]="36" /></a>
+      </div>
     </div>
   </div>
 </footer>

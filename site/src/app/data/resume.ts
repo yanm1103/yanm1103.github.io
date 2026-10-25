@@ -33,13 +33,20 @@ export const RESUME = {
   role: 'Desenvolvedor Web Fullstack',
   headlineStack: ['Angular', 'Java', 'AWS', 'Docker'],
   location: 'Mauá, SP',
-  // Troque pela foto definitiva: coloque o arquivo em public/images/ e ajuste o caminho.
+  // Troque pela foto definitiva: um PNG ou WebP com fundo transparente, recortado da cintura
+  // para cima (proporção 3:4). Coloque em public/images/ e ajuste o caminho.
   photo: 'images/foto-placeholder.svg',
   photoIsPlaceholder: true,
+  tagline:
+    'Plataformas corporativas, APIs REST e infraestrutura cloud no trabalho. Engenharia reversa e ports de jogos nas horas vagas.',
   summary:
     'Desenvolvedor com experiência em plataformas corporativas de compliance regulatório, integração de APIs REST ' +
     'e administração de infraestrutura cloud. Atuação em ambientes críticos com responsabilidade técnica e suporte à produção. ' +
     'Nas horas vagas, faço engenharia reversa e ports para PC de jogos antigos.',
+  about: [
+    'Trabalho desde 2022 na evolução de uma plataforma de compliance regulatório usada por cerca de 150 instituições financeiras, cuidando do ciclo completo: requisitos, código, deploy, infraestrutura AWS e suporte à produção.',
+    'Fora do trabalho, gosto de entender como software antigo funciona por dentro. Meus projetos pessoais recentes são ports nativos para PC de jogos de PS2 e de celular, feitos com recompilação estática e decompilação, e ferramentas web para explorar esses jogos.',
+  ],
   highlights: [
     { value: '4+', label: 'anos como dev' },
     { value: '~150', label: 'instituições financeiras atendidas' },

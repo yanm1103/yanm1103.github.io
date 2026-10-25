@@ -2,13 +2,13 @@ import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, afterNextRender, inject, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { RESUME } from './data/resume';
-import { Icon } from './shared/icon';
+import { Orb } from './shared/orb';
 
 type Theme = 'light' | 'dark';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, Icon],
+  imports: [RouterOutlet, RouterLink, Orb],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.html',
   styleUrl: './app.scss',

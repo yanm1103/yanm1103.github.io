@@ -1,71 +1,34 @@
-<!-- Banner -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-text">
-      <p class="hello">Olá, eu sou</p>
-      <h1>{{ r.name }}</h1>
-      <p class="role">
-        {{ r.role }}
-        <span class="stack">
-          @for (s of r.headlineStack; track s) {
-            <span>{{ s }}</span>
-          }
-        </span>
-      </p>
-      <p class="lead">{{ r.summary }}</p>
-      <p class="where"><app-icon name="pin" [size]="16" /> {{ r.location }}</p>
-      <div class="cta">
-        <a routerLink="/" fragment="projetos" class="btn primary">Ver projetos <app-icon name="arrow-right" /></a>
-        <a [href]="'mailto:' + r.email" class="btn"><app-icon name="mail" /> Contato</a>
-        <a [href]="r.links.github" target="_blank" rel="noopener" class="btn icon-only" aria-label="GitHub">
-          <app-icon name="github" />
-        </a>
-        <a [href]="r.links.linkedin" target="_blank" rel="noopener" class="btn icon-only" aria-label="LinkedIn">
-          <app-icon name="linkedin" />
-        </a>
-      </div>
-    </div>
+<app-hero />
 
-    <figure class="photo">
-      <img
-        [src]="r.photo"
-        [alt]="'Foto de ' + r.name + ' de braços cruzados, sorrindo'"
-        width="600"
-        height="750"
-        fetchpriority="high"
-      />
-    </figure>
-  </div>
-
-  <div class="container">
-    <ul class="highlights">
-      @for (h of r.highlights; track h.label) {
-        <li>
+<!-- Destaques -->
+<div class="container">
+  <ul class="highlights">
+    @for (h of r.highlights; track h.label; let i = $index) {
+      <li class="glass">
+        <app-orb [icon]="highlightIcons[i]" [tone]="i === 1 ? 'blue' : i === 2 ? 'aqua' : 'green'" [size]="48" />
+        <div>
           <strong>{{ h.value }}</strong>
           <span>{{ h.label }}</span>
-        </li>
-      }
-    </ul>
-  </div>
-</section>
+        </div>
+      </li>
+    }
+  </ul>
+</div>
 
 <!-- Sobre -->
-<section id="sobre" class="section alt">
+<section id="sobre" class="section">
   <div class="container about">
-    <div>
-      <p class="eyebrow">Sobre</p>
-      <h2 class="section-title">Do compliance bancário aos jogos de PS2</h2>
+    <div class="title-row">
+      <app-orb icon="user" tone="green" [size]="52" />
+      <div>
+        <p class="eyebrow">Sobre</p>
+        <h2 class="section-title">Do compliance bancário aos jogos de PS2</h2>
+      </div>
     </div>
-    <div class="about-text">
-      <p>
-        Trabalho desde 2022 na evolução de uma plataforma de compliance regulatório usada por cerca de 150 instituições
-        financeiras, cuidando do ciclo completo: requisitos, código, deploy, infraestrutura AWS e suporte à produção.
-      </p>
-      <p>
-        Fora do trabalho, gosto de entender como software antigo funciona por dentro. Meus projetos pessoais recentes
-        são ports nativos para PC de jogos de PS2 e de celular, feitos com recompilação estática e decompilação, e
-        ferramentas web para explorar esses jogos.
-      </p>
+    <div class="about-text glass">
+      @for (p of r.about; track $index) {
+        <p>{{ p }}</p>
+      }
     </div>
   </div>
 </section>
@@ -74,18 +37,22 @@
 <section id="projetos" class="section">
   <div class="container">
     <div class="section-head">
-      <div>
-        <p class="eyebrow">Projetos pessoais</p>
-        <h2 class="section-title">Mais recentes</h2>
+      <div class="title-row">
+        <app-orb icon="sparkle" tone="blue" [size]="52" />
+        <div>
+          <p class="eyebrow">Projetos pessoais</p>
+          <h2 class="section-title">Mais recentes</h2>
+        </div>
       </div>
-      <a routerLink="/projetos" class="btn">Ver todos <app-icon name="arrow-right" /></a>
+      <a routerLink="/projetos" class="btn blue">Ver todos <app-icon name="arrow-right" /></a>
     </div>
 
     <div class="projects">
       @for (p of featured; track p.slug) {
         <app-project-card [project]="p" />
       }
-      <a routerLink="/projetos" class="more-card">
+      <a routerLink="/projetos" class="more-card glass">
+        <app-orb icon="folder" tone="aqua" [size]="64" />
         <span class="more-label">Outros</span>
         <span class="more-count">+{{ others.length }} projetos</span>
         <ul>
@@ -94,22 +61,27 @@
           }
           <li>…</li>
         </ul>
-        <span class="more-go">Ver lista completa <app-icon name="arrow-right" /></span>
+        <span class="btn primary more-go">Ver lista completa <app-icon name="arrow-right" /></span>
       </a>
     </div>
   </div>
 </section>
 
 <!-- Experiência -->
-<section id="experiencia" class="section alt">
+<section id="experiencia" class="section">
   <div class="container">
-    <p class="eyebrow">Experiência</p>
-    <h2 class="section-title">Onde trabalhei</h2>
+    <div class="title-row">
+      <app-orb icon="briefcase" tone="green" [size]="52" />
+      <div>
+        <p class="eyebrow">Experiência</p>
+        <h2 class="section-title">Onde trabalhei</h2>
+      </div>
+    </div>
 
     <ol class="timeline">
       @for (e of r.experience; track e.company) {
-        <li>
-          <div class="when">{{ e.period }}</div>
+        <li class="glass">
+          <div class="when"><app-icon name="calendar" [size]="16" /> {{ e.period }}</div>
           <div class="what">
             <h3>{{ e.role }}</h3>
             <p class="company">{{ e.company }} · {{ e.place }}</p>
@@ -135,12 +107,17 @@
 <!-- Formação -->
 <section id="formacao" class="section">
   <div class="container">
-    <p class="eyebrow">Formação</p>
-    <h2 class="section-title">Estudos e certificados</h2>
+    <div class="title-row">
+      <app-orb icon="cap" tone="blue" [size]="52" />
+      <div>
+        <p class="eyebrow">Formação</p>
+        <h2 class="section-title">Estudos e certificados</h2>
+      </div>
+    </div>
 
     <div class="edu">
       @for (ed of r.education; track ed.school) {
-        <article class="panel">
+        <article class="panel glass">
           <p class="period">{{ ed.period }}</p>
           <h3>{{ ed.course }}</h3>
           <p class="company">{{ ed.school }} · {{ ed.place }}</p>
@@ -150,20 +127,20 @@
     </div>
 
     <div class="two-col">
-      <article class="panel">
+      <article class="panel glass">
         <h3>Certificados</h3>
         <ul class="plain">
           @for (c of r.certificates; track c) {
-            <li>{{ c }}</li>
+            <li><span class="dot"></span>{{ c }}</li>
           }
         </ul>
       </article>
-      <article class="panel">
+      <article class="panel glass">
         <h3>Idiomas</h3>
         <ul class="plain langs">
           @for (l of r.languages; track l.name) {
             <li>
-              <strong>{{ l.name }}</strong> <span class="muted">{{ l.level }}</span>
+              <span class="dot"></span><strong>{{ l.name }}</strong> <span class="muted">{{ l.level }}</span>
             </li>
           }
         </ul>
@@ -173,14 +150,19 @@
 </section>
 
 <!-- Habilidades -->
-<section id="habilidades" class="section alt">
+<section id="habilidades" class="section">
   <div class="container">
-    <p class="eyebrow">Habilidades</p>
-    <h2 class="section-title">Com o que eu trabalho</h2>
+    <div class="title-row">
+      <app-orb icon="code" tone="aqua" [size]="52" />
+      <div>
+        <p class="eyebrow">Habilidades</p>
+        <h2 class="section-title">Com o que eu trabalho</h2>
+      </div>
+    </div>
 
     <div class="skills">
       @for (g of r.skills; track g.name) {
-        <div class="skill-group">
+        <div class="skill-group glass">
           <h3>{{ g.name }}</h3>
           <div class="chips">
             @for (s of g.items; track s) {
@@ -196,15 +178,18 @@
 <!-- Contato -->
 <section id="contato" class="section">
   <div class="container">
-    <div class="contact">
-      <div>
-        <p class="eyebrow">Contato</p>
-        <h2 class="section-title">Vamos conversar?</h2>
-        <p class="muted">Aberto a oportunidades e a trocar ideia sobre web, cloud ou engenharia reversa.</p>
+    <div class="contact glass">
+      <div class="title-row">
+        <app-orb icon="mail" tone="green" [size]="64" />
+        <div>
+          <p class="eyebrow">Contato</p>
+          <h2 class="section-title">Vamos conversar?</h2>
+          <p class="muted">Aberto a oportunidades e a trocar ideia sobre web, cloud ou engenharia reversa.</p>
+        </div>
       </div>
       <div class="cta">
         <a [href]="'mailto:' + r.email" class="btn primary"><app-icon name="mail" /> {{ r.email }}</a>
-        <a [href]="r.links.linkedin" target="_blank" rel="noopener" class="btn"><app-icon name="linkedin" /> LinkedIn</a>
+        <a [href]="r.links.linkedin" target="_blank" rel="noopener" class="btn blue"><app-icon name="linkedin" /> LinkedIn</a>
         <a [href]="r.links.github" target="_blank" rel="noopener" class="btn"><app-icon name="github" /> GitHub</a>
       </div>
     </div>
