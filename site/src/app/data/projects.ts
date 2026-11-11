@@ -64,6 +64,23 @@ export const PROJECTS: Project[] = [
     image: 'images/alfresco-rhino.webp',
   },
   {
+    slug: 'digimon-rumble-arena-viewer',
+    name: 'Digimon Rumble Arena Model Viewer',
+    year: '2026',
+    category: 'games',
+    summary: l(
+      'Visualizador 3D no navegador dos 25 personagens de Digimon Rumble Arena (PS1): malhas, texturas, esqueletos e todas as animações de cada um. Os modelos são extraídos dos arquivos do próprio jogo por um exportador em Python puro, e a interface reaproveita as telas e a fonte do jogo.',
+      'In-browser 3D viewer for the 25 characters of Digimon Rumble Arena (PS1): meshes, textures, skeletons and every animation of each one. The models are extracted from the game\'s own files by a pure-Python exporter, and the interface reuses the game\'s own screens and font.',
+    ),
+    tags: ['JavaScript', 'Three.js', 'Vite', 'glTF', 'Python'],
+    links: [
+      { url: 'https://yanm1103.github.io/Digimon_Rumble_Arena_model_viewer/', kind: 'live' },
+      { url: `${GH}/Digimon_Rumble_Arena_model_viewer`, kind: 'repo' },
+    ],
+    image: 'images/digimon-rumble-arena-viewer.webp',
+    featured: true,
+  },
+  {
     slug: 'wotm-recompiled',
     name: 'War of the Monsters Recompiled!',
     year: '2026',
@@ -96,6 +113,22 @@ export const PROJECTS: Project[] = [
       { url: `${GH}/wotm-model-museum`, kind: 'repo' },
     ],
     image: 'images/wotm-model-museum.webp',
+  },
+  {
+    slug: 'godzilla-model-viewer',
+    name: 'Godzilla: Save the Earth Model Viewer',
+    year: '2026',
+    category: 'games',
+    summary: l(
+      'Visualizador 3D no navegador dos monstros de Godzilla: Save the Earth (PS2): malhas, texturas, esqueletos e cerca de 150 animações com nome de cada monstro, incluindo os figurinos de baixa e alta poligonagem.',
+      'In-browser 3D viewer for the monsters of Godzilla: Save the Earth (PS2): meshes, textures, skeletons and about 150 named animations per monster, including the low and high poly costumes.',
+    ),
+    tags: ['JavaScript', 'Three.js', 'Vite', 'glTF', 'Python'],
+    links: [
+      { url: 'https://yanm1103.github.io/godzilla-save-the-earth-model-viewer/', kind: 'live' },
+      { url: `${GH}/godzilla-save-the-earth-model-viewer`, kind: 'repo' },
+    ],
+    image: 'images/godzilla-model-viewer.webp',
   },
   {
     slug: 'mikis-world',
