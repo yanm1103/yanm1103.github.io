@@ -4,9 +4,11 @@
 }
 
 .hero {
+  --hero-h: clamp(620px, 92vh, 860px);
   position: relative;
   overflow: hidden;
-  height: clamp(620px, 92vh, 860px);
+  // min-height (e não height): em telas baixas o hero cresce junto com o card.
+  min-height: var(--hero-h);
   background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 45%, var(--sky-low) 80%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 }
@@ -62,8 +64,11 @@
 .content {
   position: relative;
   z-index: 4;
-  height: 100%;
-  padding-top: 70px;
+  min-height: var(--hero-h);
+  // Header fixo (~70px) + folga, para o card não ficar colado nele.
+  padding-top: 104px;
+  // Reserva a faixa onde os destaques (home.scss) sobem sobre o hero (-56px) + folga.
+  padding-bottom: 88px;
   display: flex;
   align-items: center;
 }
@@ -145,24 +150,53 @@ h1 {
   }
 }
 
-// Celular: texto em cima, você embaixo, à direita.
-@media (max-width: 760px) {
+// Telas baixas (ex.: 720p): card mais compacto para o hero não crescer demais.
+@media (min-width: 901px) and (max-height: 800px) {
+  .intro {
+    padding: 24px 30px;
+  }
+  .stack {
+    margin-top: 10px;
+  }
+  .lead {
+    margin-top: 12px;
+  }
+  .where {
+    margin-top: 10px;
+  }
+  .cta {
+    margin-top: 16px;
+  }
+  .social {
+    margin-top: 14px;
+  }
+}
+
+// Celular e tablet em pé: só o card, sem a foto (ela não cabe ao lado do card
+// e, numa linha própria, ficava só ocupando espaço).
+@media (max-width: 900px) {
   .hero {
     height: auto;
     min-height: 0;
-    padding: 96px 0 min(100vw, 430px);
+    // Embaixo: faixa onde os destaques (home.scss) sobem sobre o hero (-56px) + folga.
+    padding: 96px 0 88px;
   }
   .content {
-    height: auto;
+    min-height: 0;
     padding-top: 0;
+    padding-bottom: 0;
   }
   .intro {
     max-width: none;
   }
   .person-wrap {
-    right: 0;
-    height: min(108vw, 470px);
-    bottom: -2%;
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding-bottom: 60px; // destaques sobem só 28px no celular
   }
 }
 
